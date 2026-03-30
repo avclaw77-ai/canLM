@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI and Canada's Seniors — canLM Research</title>
+  <meta name="description" content="Nearly one in five Canadians is over 65. AI can help — but only if we build it right. A canLM research article on age-inclusive AI.">
+  <link rel="canonical" href="https://canlm.ca/research/seniors-ai.html">
+  <meta property="og:title" content="AI and Canada's Seniors — canLM Research">
+  <meta property="og:description" content="Nearly one in five Canadians is over 65. AI can help — but only if we build it right. A canLM research article on age-inclusive AI.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://canlm.ca/research/seniors-ai.html">
+  <meta property="og:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta property="og:site_name" content="canLM">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI and Canada's Seniors — canLM Research">
+  <meta name="twitter:description" content="Nearly one in five Canadians is over 65. AI can help — but only if we build it right. A canLM research article on age-inclusive AI.">
+  <meta name="twitter:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed": "#fedad8",
+            "surface-container-high": "#ebe8e2",
+            "surface": "#fcf9f3",
+            "surface-dim": "#dcdad4",
+            "primary": "#705654",
+            "on-surface-variant": "#4f4443",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f3f0ea",
+            "surface-bright": "#fcf9f3",
+            "primary-fixed-dim": "#e1bfbc",
+            "surface-container-low": "#f6f3ed",
+            "surface-container": "#f0eee8",
+            "secondary": "#6b5a5a",
+            "on-primary-container": "#fffbff",
+            "on-background": "#1c1c18",
+            "tertiary": "#5c5c5c",
+            "inverse-surface": "#31312d",
+            "outline-variant": "#d3c3c1",
+            "primary-container": "#8a6e6c",
+            "outline": "#817473",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1c1c18",
+            "on-error": "#ffffff",
+            "background": "#fcf9f3",
+            "error": "#ba1a1a",
+            "surface-variant": "#e5e2dc"
+          },
+          fontFamily: {
+            "headline": ['"Noto Serif"', "Georgia", "serif"],
+            "body": ['"Manrope"', "system-ui", "sans-serif"],
+            "label": ['"Manrope"', "system-ui", "sans-serif"]
+          },
+          maxWidth: { "site": "70rem", "content": "64rem", "narrow": "48rem" },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .glass-nav { background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .ghost-border { border: 1px solid rgba(211,195,193,0.15); }
+    .ambient-shadow { box-shadow: 0 20px 50px rgba(28,28,24,0.06); }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; padding: 0.5rem 1rem; background: #705654; color: #fff; font-family: 'Manrope', sans-serif; }
+    .skip-link:focus { left: 0; }
+    html { scroll-behavior: smooth; }
+    .lang-btn { opacity: 0.5; transition: opacity 0.2s; }
+    .lang-btn.active { opacity: 1; }
+    *:focus-visible { outline: 2px solid #705654; outline-offset: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface font-body selection:bg-primary/20 antialiased">
+  <a href="#article" class="skip-link">Skip to content</a>
+
+  <!-- Layered Frame -->
+  <div class="min-h-screen p-3 md:p-6 lg:p-10">
+  <div class="mx-auto max-w-[1600px] bg-surface border border-outline-variant/20 shadow-2xl relative overflow-hidden min-h-[calc(100vh-1.5rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-5rem)]">
+
+  <!-- Floating Glass Navigation -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-site rounded-full glass-nav ghost-border shadow-[0_8px_32px_0_rgba(28,28,24,0.06)] flex justify-between items-center px-6 md:px-8 py-3 z-50">
+    <a href="/website/" class="text-xl font-bold font-headline text-on-surface hover:text-primary transition-colors">canLM</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="/website/" data-en="Home" data-fr="Accueil">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="/website/mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+      <a class="text-on-surface hover:text-on-surface transition-colors font-headline font-bold text-sm tracking-wide" href="/website/research/" data-en="Research" data-fr="Recherche">Research</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1 text-xs font-label uppercase tracking-widest text-on-surface-variant">
+        <button class="lang-btn active px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="en" aria-label="English">EN</button>
+        <span class="text-outline-variant">/</span>
+        <button class="lang-btn px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+      </div>
+      <button class="md:hidden flex flex-col gap-1.5 p-2" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-opacity"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl flex-col items-center justify-center gap-8 text-center" id="mobile-menu">
+    <a class="text-2xl font-headline text-on-surface" href="/website/" data-en="Home" data-fr="Accueil">Home</a>
+    <a class="text-2xl font-headline text-on-surface" href="/website/mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+    <a class="text-2xl font-headline text-on-surface" href="/website/research/" data-en="Research" data-fr="Recherche">Research</a>
+    <div class="flex items-center gap-2 text-sm font-label uppercase tracking-widest text-on-surface-variant mt-4">
+      <button class="lang-btn active px-3 py-1 rounded-full" data-lang="en" aria-label="English">EN</button>
+      <span class="text-outline-variant">/</span>
+      <button class="lang-btn px-3 py-1 rounded-full" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+    </div>
+  </div>
+
+  <!-- Article Hero -->
+  <header class="relative pt-32 pb-16 bg-surface-container-low overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none" aria-hidden="true">
+      <svg viewBox="0 0 400 400" class="w-full h-full text-primary">
+        <circle cx="200" cy="200" r="150" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="10 5" />
+        <circle cx="200" cy="200" r="100" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="5 10" />
+        <path d="M200,50 L200,350 M50,200 L350,200" stroke="currentColor" stroke-width="0.5" />
+      </svg>
+    </div>
+    <div class="container mx-auto px-6 relative z-10 max-w-content">
+      <a href="/website/research/" class="inline-flex items-center gap-2 text-sm text-primary hover:text-on-surface transition-colors font-medium mb-8" data-en="&larr; Back to Research" data-fr="&larr; Retour &agrave; la recherche">&larr; Back to Research</a>
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="inline-block px-4 py-1 rounded-full bg-white/40 backdrop-blur-md ghost-border text-[0.7rem] uppercase tracking-[0.1em] font-label text-primary font-semibold" data-en="Accessibility" data-fr="Accessibilit&eacute;">Accessibility</span>
+        <span class="inline-block px-4 py-1 rounded-full bg-white/40 backdrop-blur-md ghost-border text-[0.7rem] uppercase tracking-[0.1em] font-label text-primary font-semibold" data-en="Healthcare" data-fr="Sant&eacute;">Healthcare</span>
+        <span class="text-sm text-on-surface-variant font-light" data-en="March 2026" data-fr="Mars 2026">March 2026</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-on-surface mb-6 leading-tight" data-en="AI and Canada's Seniors: Building Technology That Includes Everyone" data-fr="L'IA et les a&icirc;n&eacute;s du Canada : b&acirc;tir une technologie qui inclut tout le monde">AI and Canada's Seniors: Building Technology That Includes Everyone</h1>
+      <p class="text-xs uppercase tracking-widest font-label font-semibold text-primary mb-4">canLM Research</p>
+      <p class="text-xl text-on-surface-variant font-light leading-relaxed max-w-2xl" data-en="Nearly one in five Canadians is over 65. By 2037, it will be one in four. AI can help &mdash; but only if we build it right." data-fr="Pr&egrave;s d'un Canadien sur cinq a plus de 65 ans. D'ici 2037, ce sera un sur quatre. L'IA peut aider &mdash; mais seulement si on la b&acirc;tit comme il faut.">Nearly one in five Canadians is over 65. By 2037, it will be one in four. AI can help &mdash; but only if we build it right.</p>
+    </div>
+  </header>
+
+  <!-- Article Body -->
+  <article id="article" class="container mx-auto px-6 py-16 md:py-24">
+    <div class="max-w-content mx-auto space-y-8">
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface" data-en="A Country That's Getting Older, Fast" data-fr="Un pays qui vieillit, vite">A Country That's Getting Older, Fast</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Canada is entering uncharted demographic territory. As of July 2025, 19.5% of Canadians &mdash; approximately 8.1 million people &mdash; are aged 65 and older. This cohort is growing six times faster than children aged 0&ndash;14, and the need for in-home senior care is projected to exceed the availability of human caregivers within the decade." data-fr="Le Canada entre dans un territoire d&eacute;mographique inconnu. En juillet 2025, 19,5 % des Canadiens &mdash; environ 8,1 millions de personnes &mdash; ont 65 ans et plus. Ce groupe cro&icirc;t six fois plus vite que les enfants de 0 &agrave; 14 ans, et le besoin de soins &agrave; domicile pour les a&icirc;n&eacute;s devrait d&eacute;passer la disponibilit&eacute; des aidants humains d'ici la fin de la d&eacute;cennie.">Canada is entering uncharted demographic territory. As of July 2025, 19.5% of Canadians &mdash; approximately 8.1 million people &mdash; are aged 65 and older. This cohort is growing six times faster than children aged 0&ndash;14, and the need for in-home senior care is projected to exceed the availability of human caregivers within the decade.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Newfoundland and Labrador has already crossed the 25% threshold. Meanwhile, 90% of older Canadians express a desire to age in their own homes. These numbers tell a clear story: Canada needs new solutions for eldercare, and AI is one of the most promising tools available." data-fr="Terre-Neuve-et-Labrador a d&eacute;j&agrave; franchi le seuil de 25 %. Pendant ce temps, 90 % des Canadiens plus &acirc;g&eacute;s expriment le d&eacute;sir de vieillir chez eux. Ces chiffres racontent une histoire claire : le Canada a besoin de nouvelles solutions pour les soins aux a&icirc;n&eacute;s, et l'IA est l'un des outils les plus prometteurs.">Newfoundland and Labrador has already crossed the 25% threshold. Meanwhile, 90% of older Canadians express a desire to age in their own homes. These numbers tell a clear story: Canada needs new solutions for eldercare, and AI is one of the most promising tools available.</p>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="Seniors Aren't Afraid of AI &mdash; They're Underserved By It" data-fr="Les a&icirc;n&eacute;s n'ont pas peur de l'IA &mdash; ils sont mal servis par elle">Seniors Aren't Afraid of AI &mdash; They're Underserved By It</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="A common assumption is that elderly Canadians resist technology. The data tells a different story." data-fr="On assume souvent que les a&icirc;n&eacute;s canadiens r&eacute;sistent &agrave; la technologie. Les donn&eacute;es racontent une autre histoire.">A common assumption is that elderly Canadians resist technology. The data tells a different story.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Canadian Digital Health Surveys (2021&ndash;2023) found that &lt;strong&gt;44.6% of respondents&lt;/strong&gt; were moderately comfortable with AI in healthcare &mdash; and surprisingly, &lt;strong&gt;adults aged 65+ showed higher comfort levels&lt;/strong&gt; with AI in healthcare than respondents aged 16&ndash;24. When AI use involved personal health data under informed consent, comfort rose to &lt;strong&gt;64.7%&lt;/strong&gt;." data-fr="Les sondages canadiens en sant&eacute; num&eacute;rique (2021&ndash;2023) ont trouv&eacute; que &lt;strong&gt;44,6 % des r&eacute;pondants&lt;/strong&gt; &eacute;taient mod&eacute;r&eacute;ment &agrave; l'aise avec l'IA en sant&eacute; &mdash; et surprise, &lt;strong&gt;les adultes de 65 ans et plus montraient un niveau de confort plus &eacute;lev&eacute;&lt;/strong&gt; avec l'IA en sant&eacute; que les r&eacute;pondants de 16 &agrave; 24 ans. Quand l'utilisation de l'IA impliquait des donn&eacute;es personnelles de sant&eacute; avec consentement &eacute;clair&eacute;, le confort montait &agrave; &lt;strong&gt;64,7 %&lt;/strong&gt;.">Canadian Digital Health Surveys (2021&ndash;2023) found that <strong>44.6% of respondents</strong> were moderately comfortable with AI in healthcare &mdash; and surprisingly, <strong>adults aged 65+ showed higher comfort levels</strong> with AI in healthcare than respondents aged 16&ndash;24. When AI use involved personal health data under informed consent, comfort rose to <strong>64.7%</strong>.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="The barrier isn't willingness &mdash; it's design. Most AI tools are built for younger, tech-savvy users. Seniors face:" data-fr="La barri&egrave;re, c'est pas la volont&eacute; &mdash; c'est le design. La plupart des outils d'IA sont b&acirc;tis pour des utilisateurs jeunes et technos. Les a&icirc;n&eacute;s font face &agrave; :">The barrier isn't willingness &mdash; it's design. Most AI tools are built for younger, tech-savvy users. Seniors face:</p>
+      <ul class="list-disc pl-6 space-y-4 text-on-surface-variant font-light leading-relaxed">
+        <li data-en="&lt;strong&gt;Tiny text and complex interfaces&lt;/strong&gt; that don't account for vision or dexterity changes" data-fr="&lt;strong&gt;Du texte minuscule et des interfaces complexes&lt;/strong&gt; qui ne tiennent pas compte des changements de vision ou de dext&eacute;rit&eacute;"><strong>Tiny text and complex interfaces</strong> that don't account for vision or dexterity changes</li>
+        <li data-en="&lt;strong&gt;Voice recognition that fails&lt;/strong&gt; on age-affected speech patterns" data-fr="&lt;strong&gt;De la reconnaissance vocale qui &eacute;choue&lt;/strong&gt; sur les patrons de parole affect&eacute;s par l'&acirc;ge"><strong>Voice recognition that fails</strong> on age-affected speech patterns</li>
+        <li data-en="&lt;strong&gt;No French-language options&lt;/strong&gt; for Francophone seniors outside major centres" data-fr="&lt;strong&gt;Aucune option en fran&ccedil;ais&lt;/strong&gt; pour les a&icirc;n&eacute;s francophones en dehors des grands centres"><strong>No French-language options</strong> for Francophone seniors outside major centres</li>
+        <li data-en="&lt;strong&gt;Privacy designs that assume&lt;/strong&gt; digital literacy rather than explaining plainly" data-fr="&lt;strong&gt;Des designs de confidentialit&eacute; qui pr&eacute;sument&lt;/strong&gt; la litt&eacute;ratie num&eacute;rique au lieu d'expliquer clairement"><strong>Privacy designs that assume</strong> digital literacy rather than explaining plainly</li>
+      </ul>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="Where AI Can Make a Real Difference" data-fr="O&ugrave; l'IA peut faire une vraie diff&eacute;rence">Where AI Can Make a Real Difference</h2>
+
+      <h3 class="text-xl font-headline font-bold text-on-surface" data-en="Health and Wellness" data-fr="Sant&eacute; et bien-&ecirc;tre">Health and Wellness</h3>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Researchers at Carleton University in Ottawa are using AI-equipped cameras to analyze walking patterns and predict health decline &mdash; using privacy-preserving stick-figure representations rather than actual video. AI-powered medication management can alert caregivers about missed doses or dangerous drug interactions. Remote monitoring of chronic conditions reduces hospital visits, especially in rural Canada." data-fr="Des chercheurs de l'Universit&eacute; Carleton &agrave; Ottawa utilisent des cam&eacute;ras &eacute;quip&eacute;es d'IA pour analyser les patrons de marche et pr&eacute;dire le d&eacute;clin de sant&eacute; &mdash; en utilisant des repr&eacute;sentations en bonhomme allumette plut&ocirc;t que de la vraie vid&eacute;o pour pr&eacute;server la vie priv&eacute;e. La gestion de la m&eacute;dication par IA peut alerter les aidants sur les doses manqu&eacute;es ou les interactions m&eacute;dicamenteuses dangereuses. La surveillance &agrave; distance des conditions chroniques r&eacute;duit les visites &agrave; l'h&ocirc;pital, surtout en r&eacute;gion.">Researchers at Carleton University in Ottawa are using AI-equipped cameras to analyze walking patterns and predict health decline &mdash; using privacy-preserving stick-figure representations rather than actual video. AI-powered medication management can alert caregivers about missed doses or dangerous drug interactions. Remote monitoring of chronic conditions reduces hospital visits, especially in rural Canada.</p>
+
+      <h3 class="text-xl font-headline font-bold text-on-surface" data-en="Daily Living" data-fr="Vie quotidienne">Daily Living</h3>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Smart home systems can adapt lighting, temperature, and security to daily routines. AI-assisted navigation helps seniors who can no longer drive &mdash; critical in car-dependent suburban and rural communities. Financial AI can detect fraud patterns, protecting seniors who are disproportionately targeted by scams." data-fr="Les syst&egrave;mes de maison intelligente peuvent adapter l'&eacute;clairage, la temp&eacute;rature et la s&eacute;curit&eacute; aux routines quotidiennes. La navigation assist&eacute;e par IA aide les a&icirc;n&eacute;s qui ne peuvent plus conduire &mdash; essentiel dans les communaut&eacute;s de banlieue et rurales d&eacute;pendantes de l'auto. L'IA financi&egrave;re peut d&eacute;tecter des patrons de fraude, prot&eacute;geant les a&icirc;n&eacute;s qui sont cibl&eacute;s de mani&egrave;re disproportionn&eacute;e par les arnaques.">Smart home systems can adapt lighting, temperature, and security to daily routines. AI-assisted navigation helps seniors who can no longer drive &mdash; critical in car-dependent suburban and rural communities. Financial AI can detect fraud patterns, protecting seniors who are disproportionately targeted by scams.</p>
+
+      <h3 class="text-xl font-headline font-bold text-on-surface" data-en="Social Connection" data-fr="Connexion sociale">Social Connection</h3>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Perhaps most importantly, AI can combat the isolation epidemic. Conversational AI has evolved from simple command-takers to companions that engage in real conversation, play games, and support reminiscence therapy. AI-powered platforms can match seniors with local activities, volunteer opportunities, and peer groups." data-fr="Peut-&ecirc;tre le plus important, l'IA peut combattre l'&eacute;pid&eacute;mie d'isolement. L'IA conversationnelle a &eacute;volu&eacute; de simples preneurs de commandes &agrave; des compagnons qui engagent de vraies conversations, jouent &agrave; des jeux et soutiennent la th&eacute;rapie de r&eacute;miniscence. Des plateformes aliment&eacute;es par l'IA peuvent jumeler les a&icirc;n&eacute;s avec des activit&eacute;s locales, des opportunit&eacute;s de b&eacute;n&eacute;volat et des groupes de pairs.">Perhaps most importantly, AI can combat the isolation epidemic. Conversational AI has evolved from simple command-takers to companions that engage in real conversation, play games, and support reminiscence therapy. AI-powered platforms can match seniors with local activities, volunteer opportunities, and peer groups.</p>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="What Canada Must Do" data-fr="Ce que le Canada doit faire">What Canada Must Do</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Our research identifies five priority areas for age-inclusive AI policy:" data-fr="Notre recherche identifie cinq domaines prioritaires pour une politique d'IA inclusive des a&icirc;n&eacute;s :">Our research identifies five priority areas for age-inclusive AI policy:</p>
+      <ol class="list-decimal pl-6 space-y-4 text-on-surface-variant font-light leading-relaxed">
+        <li data-en="&lt;strong&gt;Strengthen regulations with age-specific provisions.&lt;/strong&gt; AI systems serving elderly populations in health and care should be classified as &quot;high-impact&quot; by default, with mandatory age-disaggregated bias testing." data-fr="&lt;strong&gt;Renforcer la r&eacute;glementation avec des dispositions sp&eacute;cifiques &agrave; l'&acirc;ge.&lt;/strong&gt; Les syst&egrave;mes d'IA servant les populations a&icirc;n&eacute;es en sant&eacute; et soins devraient &ecirc;tre classifi&eacute;s &laquo; &agrave; haut impact &raquo; par d&eacute;faut, avec des tests de biais obligatoires ventil&eacute;s par &acirc;ge."><strong>Strengthen regulations with age-specific provisions.</strong> AI systems serving elderly populations in health and care should be classified as "high-impact" by default, with mandatory age-disaggregated bias testing.</li>
+        <li data-en="&lt;strong&gt;Mandate participatory design.&lt;/strong&gt; Products targeting seniors must involve older adults in design, testing, and evaluation. Nothing about them without them." data-fr="&lt;strong&gt;Exiger la conception participative.&lt;/strong&gt; Les produits ciblant les a&icirc;n&eacute;s doivent impliquer les adultes plus &acirc;g&eacute;s dans la conception, les tests et l'&eacute;valuation. Rien &agrave; leur sujet sans eux."><strong>Mandate participatory design.</strong> Products targeting seniors must involve older adults in design, testing, and evaluation. Nothing about them without them.</li>
+        <li data-en="&lt;strong&gt;Invest in digital literacy.&lt;/strong&gt; Fund AI literacy workshops at community centres, libraries, and seniors' residences &mdash; in both official languages, with special programs for Indigenous elders and remote communities." data-fr="&lt;strong&gt;Investir dans la litt&eacute;ratie num&eacute;rique.&lt;/strong&gt; Financer des ateliers de litt&eacute;ratie en IA dans les centres communautaires, les biblioth&egrave;ques et les r&eacute;sidences pour a&icirc;n&eacute;s &mdash; dans les deux langues officielles, avec des programmes sp&eacute;ciaux pour les a&icirc;n&eacute;s autochtones et les communaut&eacute;s &eacute;loign&eacute;es."><strong>Invest in digital literacy.</strong> Fund AI literacy workshops at community centres, libraries, and seniors' residences &mdash; in both official languages, with special programs for Indigenous elders and remote communities.</li>
+        <li data-en="&lt;strong&gt;Build Canadian data infrastructure.&lt;/strong&gt; Create bilingual training datasets that include diverse elderly voices and speech patterns. Ensure health data used for AI respects Canadian sovereignty and privacy requirements." data-fr="&lt;strong&gt;B&acirc;tir l'infrastructure de donn&eacute;es canadienne.&lt;/strong&gt; Cr&eacute;er des ensembles de donn&eacute;es d'entra&icirc;nement bilingues qui incluent des voix et des patrons de parole diversifi&eacute;s d'a&icirc;n&eacute;s. S'assurer que les donn&eacute;es de sant&eacute; utilis&eacute;es pour l'IA respectent la souverainet&eacute; et les exigences de vie priv&eacute;e canadiennes."><strong>Build Canadian data infrastructure.</strong> Create bilingual training datasets that include diverse elderly voices and speech patterns. Ensure health data used for AI respects Canadian sovereignty and privacy requirements.</li>
+        <li data-en="&lt;strong&gt;Fight ageism in AI.&lt;/strong&gt; Require bias audits specifically testing for age-based discrimination. AI training data frequently contains ageist language and assumptions &mdash; this must be actively countered." data-fr="&lt;strong&gt;Combattre l'&acirc;gisme dans l'IA.&lt;/strong&gt; Exiger des audits de biais testant sp&eacute;cifiquement la discrimination bas&eacute;e sur l'&acirc;ge. Les donn&eacute;es d'entra&icirc;nement de l'IA contiennent fr&eacute;quemment du langage et des pr&eacute;jug&eacute;s &acirc;gistes &mdash; il faut activement contrer &ccedil;a."><strong>Fight ageism in AI.</strong> Require bias audits specifically testing for age-based discrimination. AI training data frequently contains ageist language and assumptions &mdash; this must be actively countered.</li>
+      </ol>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="The Bottom Line" data-fr="L'essentiel">The Bottom Line</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="The global AI in Aging and Elderly Care market was valued at USD 56.78 billion in 2025, and it's growing rapidly. Canada has the research talent, the regulatory framework, and the social values to lead in age-inclusive AI." data-fr="Le march&eacute; mondial de l'IA dans les soins aux a&icirc;n&eacute;s &eacute;tait &eacute;valu&eacute; &agrave; 56,78 milliards USD en 2025, et il cro&icirc;t rapidement. Le Canada a le talent en recherche, le cadre r&eacute;glementaire et les valeurs sociales pour mener en IA inclusive des a&icirc;n&eacute;s.">The global AI in Aging and Elderly Care market was valued at USD 56.78 billion in 2025, and it's growing rapidly. Canada has the research talent, the regulatory framework, and the social values to lead in age-inclusive AI.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="But the window is closing. Every AI system deployed today without considering elderly users creates another layer of exclusion. Every voice dataset trained without age-diverse speech patterns makes the problem harder to fix later." data-fr="Mais la fen&ecirc;tre se referme. Chaque syst&egrave;me d'IA d&eacute;ploy&eacute; aujourd'hui sans consid&eacute;rer les utilisateurs a&icirc;n&eacute;s cr&eacute;e une autre couche d'exclusion. Chaque ensemble de donn&eacute;es vocales entra&icirc;n&eacute; sans patrons de parole diversifi&eacute;s en &acirc;ge rend le probl&egrave;me plus difficile &agrave; corriger plus tard.">But the window is closing. Every AI system deployed today without considering elderly users creates another layer of exclusion. Every voice dataset trained without age-diverse speech patterns makes the problem harder to fix later.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Canada's seniors built this country. They deserve AI that works for them &mdash; not despite them." data-fr="Les a&icirc;n&eacute;s du Canada ont b&acirc;ti ce pays. Ils m&eacute;ritent une IA qui fonctionne pour eux &mdash; pas malgr&eacute; eux.">Canada's seniors built this country. They deserve AI that works for them &mdash; not despite them.</p>
+
+      <div class="glass-card ghost-border rounded-2xl p-8 mt-12">
+        <p class="text-sm text-on-surface-variant font-light leading-relaxed" data-en="This article is based on the canLM research paper &quot;AI for Elderly Canadians: Needs, Opportunities, and Pathways to Age-Inclusive Design,&quot; March 2026. Full paper available upon request." data-fr="Cet article est bas&eacute; sur le document de recherche canLM &laquo; L'IA pour les a&icirc;n&eacute;s canadiens : besoins, opportunit&eacute;s et voies vers une conception inclusive &raquo;, mars 2026. Document complet disponible sur demande.">This article is based on the canLM research paper "AI for Elderly Canadians: Needs, Opportunities, and Pathways to Age-Inclusive Design," March 2026. Full paper available upon request.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="bg-surface w-full py-12 md:py-16">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-site mx-auto gap-8">
+      <div class="text-center md:text-left">
+        <a href="/website/" class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors">canLM</a>
+        <p class="font-label text-xs uppercase tracking-[0.05em] text-primary mt-2" data-en="Canada's Applied AI Research" data-fr="Recherche appliqu&eacute;e en IA du Canada">Canada's Applied AI Research</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a href="/website/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Home" data-fr="Accueil">Home</a>
+        <a href="/website/mission/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+        <a href="/website/research/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Research" data-fr="Recherche">Research</a>
+      </div>
+      <p class="font-label text-xs text-on-surface-variant/60">&copy; 2026 canLM</p>
+    </div>
+  </footer>
+
+  </div><!-- /frame inner -->
+  </div><!-- /frame outer -->
+
+  <script>
+    (function () {
+      // Mobile nav toggle
+      var toggle = document.getElementById('nav-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', function () {
+          var isOpen = mobileMenu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            mobileMenu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Language toggle
+      var currentLang = 'en';
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          currentLang = this.getAttribute('data-lang');
+          document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll('[data-lang="' + currentLang + '"]').forEach(function (b) { b.classList.add('active'); });
+          document.querySelectorAll('[data-en][data-fr]').forEach(function (el) {
+            var text = el.getAttribute('data-' + currentLang);
+            if (text) el.innerHTML = text;
+          });
+          document.documentElement.lang = currentLang === 'fr' ? 'fr' : 'en';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

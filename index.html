@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canLM — Canada's Applied AI Research</title>
+  <meta name="description" content="canLM is Canada's applied AI research company. We accelerate Canadian AI adoption through sovereign LLM research, cultural tuning, and bilingual innovation.">
+  <link rel="canonical" href="https://canlm.ca/">
+  <meta property="og:title" content="canLM — Canada's Applied AI Research">
+  <meta property="og:description" content="canLM is Canada's applied AI research company. We accelerate Canadian AI adoption through sovereign LLM research, cultural tuning, and bilingual innovation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://canlm.ca/">
+  <meta property="og:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta property="og:site_name" content="canLM">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="canLM — Canada's Applied AI Research">
+  <meta name="twitter:description" content="canLM is Canada's applied AI research company. We accelerate Canadian AI adoption through sovereign LLM research, cultural tuning, and bilingual innovation.">
+  <meta name="twitter:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed": "#fedad8",
+            "tertiary-container": "#757474",
+            "surface-container-high": "#ebe8e2",
+            "surface": "#fcf9f3",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#dcdad4",
+            "primary": "#705654",
+            "on-surface-variant": "#4f4443",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f3f0ea",
+            "secondary-container": "#f2dada",
+            "error-container": "#ffdad6",
+            "surface-bright": "#fcf9f3",
+            "primary-fixed-dim": "#e1bfbc",
+            "surface-container-low": "#f6f3ed",
+            "surface-container": "#f0eee8",
+            "secondary": "#6b5a5a",
+            "on-primary-container": "#fffbff",
+            "on-background": "#1c1c18",
+            "tertiary": "#5c5c5c",
+            "inverse-surface": "#31312d",
+            "outline-variant": "#d3c3c1",
+            "primary-container": "#8a6e6c",
+            "outline": "#817473",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1c1c18",
+            "on-error": "#ffffff",
+            "background": "#fcf9f3",
+            "error": "#ba1a1a",
+            "surface-variant": "#e5e2dc"
+          },
+          fontFamily: {
+            "headline": ['"Noto Serif"', "Georgia", "serif"],
+            "body": ['"Manrope"', "system-ui", "sans-serif"],
+            "label": ['"Manrope"', "system-ui", "sans-serif"]
+          },
+          maxWidth: {
+            "site": "70rem",
+            "content": "64rem",
+            "narrow": "48rem",
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(112, 86, 84, 0.1) 0%, rgba(138, 110, 108, 0.05) 100%);
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 999;
+      padding: 0.5rem 1rem;
+      background: #705654;
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+    }
+    .skip-link:focus {
+      left: 0;
+    }
+    /* Hero glass */
+    .hero-glass {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(211, 195, 193, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(28, 28, 24, 0.06);
+    }
+    /* Mobile nav */
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+    /* Lang toggle */
+    .lang-btn { opacity: 0.5; transition: opacity 0.2s; }
+    .lang-btn.active { opacity: 1; }
+    /* Newsletter success */
+    .newsletter-success-msg { display: none; }
+    .newsletter-success-msg.show { display: block; }
+    /* Focus ring */
+    *:focus-visible { outline: 2px solid #705654; outline-offset: 2px; }
+    /* Ghost border utility */
+    .ghost-border { border: 1px solid rgba(211, 195, 193, 0.15); }
+    /* Ambient shadow */
+    .ambient-shadow { box-shadow: 0 20px 50px rgba(28, 28, 24, 0.06); }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface font-body selection:bg-primary/20 antialiased">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Layered Frame -->
+  <div class="min-h-screen p-3 md:p-6 lg:p-10">
+  <div class="mx-auto max-w-[1600px] bg-surface border border-outline-variant/20 shadow-2xl relative overflow-hidden min-h-[calc(100vh-1.5rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-5rem)]">
+
+  <!-- Floating Glass Navigation -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-site rounded-full glass-nav ghost-border shadow-[0_8px_32px_0_rgba(28,28,24,0.06)] flex justify-between items-center px-6 md:px-8 py-3 z-50">
+    <a href="./" class="text-xl font-bold font-headline text-on-surface hover:text-primary transition-colors">canLM</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="./" data-en="Home" data-fr="Accueil">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="./mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="./research/" data-en="Research" data-fr="Recherche">Research</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1 text-xs font-label uppercase tracking-widest text-on-surface-variant">
+        <button class="lang-btn active px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="en" aria-label="English">EN</button>
+        <span class="text-outline-variant">/</span>
+        <button class="lang-btn px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+      </div>
+      <!-- Mobile toggle -->
+      <button class="md:hidden flex flex-col gap-1.5 p-2" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-opacity"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl flex-col items-center justify-center gap-8 text-center" id="mobile-menu">
+    <a class="text-2xl font-headline text-on-surface" href="./" data-en="Home" data-fr="Accueil">Home</a>
+    <a class="text-2xl font-headline text-on-surface" href="./mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+    <a class="text-2xl font-headline text-on-surface" href="./research/" data-en="Research" data-fr="Recherche">Research</a>
+    <div class="flex items-center gap-2 text-sm font-label uppercase tracking-widest text-on-surface-variant mt-4">
+      <button class="lang-btn active px-3 py-1 rounded-full" data-lang="en" aria-label="English">EN</button>
+      <span class="text-outline-variant">/</span>
+      <button class="lang-btn px-3 py-1 rounded-full" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
+      <div class="absolute inset-0 z-0 flex justify-center items-center p-6 md:p-16">
+        <div class="w-full h-full max-w-6xl relative rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+          <img class="w-full h-full object-cover opacity-90" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1920" alt="Canadian Rockies panoramic landscape" loading="eager" referrerpolicy="no-referrer">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-surface/10 to-surface/40"></div>
+        </div>
+      </div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 shadow-xl">
+          <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-white/40 backdrop-blur-md ghost-border text-[0.75rem] uppercase tracking-[0.1em] font-label text-primary font-semibold" data-en="Applied AI Research" data-fr="Recherche appliqu&eacute;e en IA">Applied AI Research</span>
+          <h1 class="text-5xl md:text-7xl font-headline font-bold text-on-surface leading-[1.1] mb-8" data-html data-en="Canada deserves &lt;br&gt;&lt;span class='italic text-primary'&gt;its own AI&lt;/span&gt;" data-fr="Le Canada m&eacute;rite &lt;br&gt;&lt;span class='italic text-primary'&gt;sa propre IA&lt;/span&gt;">Canada deserves <br><span class="italic text-primary">its own AI</span></h1>
+          <p class="text-xl md:text-2xl text-on-surface-variant font-light leading-relaxed mb-10 max-w-2xl" data-en="Research, models, and content rooted in Canadian cultures, languages, and communities. Built for the North, by the North." data-fr="Recherches, mod&egrave;les et contenu ancr&eacute;s dans les cultures, les langues et les communaut&eacute;s canadiennes. B&acirc;ti pour le Nord, par le Nord.">Research, models, and content rooted in Canadian cultures, languages, and communities. Built for the North, by the North.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="./research/" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-medium text-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group" data-en="Explore Research" data-fr="Explorer la recherche">
+              Explore Research
+              <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+            <a href="./mission/" class="glass-card ghost-border px-8 py-4 rounded-xl font-medium text-lg hover:bg-surface-container transition-all flex items-center justify-center" data-en="Our Mission" data-fr="Notre mission">Our Mission</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Foundational Pillars -->
+    <section class="py-24 md:py-32 bg-surface">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16 md:mb-20">
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Our Foundational Pillars" data-fr="Nos piliers fondamentaux">Our Foundational Pillars</h2>
+          <div class="w-24 h-1 bg-primary/20 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">visibility</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="Vision" data-fr="Vision">Vision</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Pioneering an intelligence that understands the nuance of the Canadian landscape and societal fabric." data-fr="Pionniers d'une intelligence qui comprend les nuances du paysage et du tissu social canadien.">Pioneering an intelligence that understands the nuance of the Canadian landscape and societal fabric.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">gavel</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="Ethics" data-fr="&Eacute;thique">Ethics</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Radical transparency in data sourcing and model alignment, prioritizing collective human welfare." data-fr="Transparence radicale dans l'approvisionnement en donn&eacute;es et l'alignement des mod&egrave;les, privil&eacute;giant le bien-&ecirc;tre humain collectif.">Radical transparency in data sourcing and model alignment, prioritizing collective human welfare.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">shield</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="Sovereignty" data-fr="Souverainet&eacute;">Sovereignty</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Keeping Canadian data within borders, ensuring technological independence for future generations." data-fr="Garder les donn&eacute;es canadiennes &agrave; l'int&eacute;rieur des fronti&egrave;res, assurant l'ind&eacute;pendance technologique pour les g&eacute;n&eacute;rations futures.">Keeping Canadian data within borders, ensuring technological independence for future generations.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">universal_currency_alt</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="Accessibility" data-fr="Accessibilit&eacute;">Accessibility</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Democratizing high-tier compute and models for every community from coast to coast to coast." data-fr="D&eacute;mocratiser le calcul de pointe et les mod&egrave;les pour chaque communaut&eacute; d'un oc&eacute;an &agrave; l'autre.">Democratizing high-tier compute and models for every community from coast to coast to coast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-24 md:py-32 bg-primary/[0.04] relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 1000 300" class="w-full h-full text-primary fill-none stroke-current stroke-[0.5]" preserveAspectRatio="none">
+          <path d="M0,250 L100,180 L200,220 L350,80 L500,150 L650,40 L800,180 L900,100 L1000,200" />
+        </svg>
+      </div>
+      <div class="container mx-auto px-6 max-w-content relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div>
+            <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Our Mission" data-fr="Notre mission">Our Mission</span>
+            <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-6 leading-tight" data-en="Canada needs its own voice in AI" data-fr="Le Canada a besoin de sa propre voix en IA">Canada needs its own voice in AI</h2>
+            <p class="text-lg text-on-surface-variant font-light leading-relaxed" data-en="Leading nations are building AI that reflects their values and serves their people. Canada deserves the same &mdash; research rooted in Canadian society, fluent in both official languages, and designed for the communities it serves." data-fr="Les grandes nations b&acirc;tissent une IA qui refl&egrave;te leurs valeurs et sert leur population. Le Canada m&eacute;rite la m&ecirc;me chose &mdash; une recherche ancr&eacute;e dans la soci&eacute;t&eacute; canadienne, courante dans les deux langues officielles, et con&ccedil;ue pour les communaut&eacute;s qu'elle sert.">Leading nations are building AI that reflects their values and serves their people. Canada deserves the same &mdash; research rooted in Canadian society, fluent in both official languages, and designed for the communities it serves.</p>
+          </div>
+          <div class="space-y-6">
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">01</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Canadian-First AI" data-fr="L'IA canadienne d'abord">Canadian-First AI</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Research focused on the unique needs of Canadian communities, institutions, and industries." data-fr="Recherche ax&eacute;e sur les besoins uniques des communaut&eacute;s, institutions et industries canadiennes.">Research focused on the unique needs of Canadian communities, institutions, and industries.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">02</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Bilingual by Design" data-fr="Bilingue par conception">Bilingual by Design</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Qu&eacute;b&eacute;cois French and Canadian English, natively understood." data-fr="Fran&ccedil;ais qu&eacute;b&eacute;cois et anglais canadien, compris nativement.">Qu&eacute;b&eacute;cois French and Canadian English, natively understood.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">03</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Cultural Understanding" data-fr="Compr&eacute;hension culturelle">Cultural Understanding</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Reflecting Canada's diversity: Indigenous communities, multicultural population, regional differences." data-fr="Refl&eacute;ter la diversit&eacute; du Canada : communaut&eacute;s autochtones, population multiculturelle, diff&eacute;rences r&eacute;gionales.">Reflecting Canada's diversity: Indigenous communities, multicultural population, regional differences.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">04</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Open Research" data-fr="Recherche ouverte">Open Research</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Publishing findings openly to grow the Canadian AI ecosystem." data-fr="Partager nos d&eacute;couvertes ouvertement pour faire cro&icirc;tre l'&eacute;cosyst&egrave;me canadien de l'IA.">Publishing findings openly to grow the Canadian AI ecosystem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Domains (Bento Grid) -->
+    <section class="py-24 md:py-32 relative">
+      <div class="absolute inset-0 z-0">
+        <div class="w-full h-full bg-surface-container">
+          <img class="w-full h-full object-cover opacity-20 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg6xqScDKmygqLJAnYvnL5imMuNgTXzIxhYPAeJmJQge-fk8hb4HuQ25bYHyYKz_mUkZDETX-TmNH2f4JYRYaZ75QyVpfV_o739wrpE1JH2CrLTAPBn1un4YsZDgYywawWGSc-T2vQfxMh_0k5DuNYVxIldehf_F9axvs_KiJgml3Pl-fi1RBUzf6kEiKOCdXwXgYYZISM-0FQ2PteJybXwaH2__5MpG4xChPn6tMYYUQVgPRB1lrnEhWWGjU-O2HwV_VxXAFoeB8" alt="" loading="lazy" aria-hidden="true">
+        </div>
+        <div class="absolute inset-0 bg-surface/80"></div>
+      </div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-12 md:mb-16">
+          <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Research Domains" data-fr="Domaines de recherche">Research Domains</h2>
+          <div class="w-24 h-1 bg-primary/20 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <a href="./mission/" class="glass-card px-8 py-6 rounded-xl ghost-border ambient-shadow flex items-center justify-center text-center group hover:bg-surface-container-highest/50 transition-colors">
+            <h4 class="text-lg md:text-xl font-headline font-bold group-hover:text-primary transition-colors" data-en="Sovereign AI" data-fr="IA souveraine">Sovereign AI</h4>
+          </a>
+          <a href="./mission/" class="glass-card px-8 py-6 rounded-xl ghost-border ambient-shadow flex items-center justify-center text-center group hover:bg-surface-container-highest/50 transition-colors">
+            <h4 class="text-lg md:text-xl font-headline font-bold group-hover:text-primary transition-colors" data-en="Linguistic Tuning" data-fr="Ajustement linguistique">Linguistic Tuning</h4>
+          </a>
+          <a href="./mission/" class="glass-card px-8 py-6 rounded-xl ghost-border ambient-shadow flex items-center justify-center text-center group hover:bg-surface-container-highest/50 transition-colors">
+            <h4 class="text-lg md:text-xl font-headline font-bold group-hover:text-primary transition-colors" data-en="Indigenous Communities" data-fr="Communaut&eacute;s autochtones">Indigenous Communities</h4>
+          </a>
+          <a href="./mission/" class="glass-card px-8 py-6 rounded-xl ghost-border ambient-shadow flex items-center justify-center text-center group hover:bg-surface-container-highest/50 transition-colors">
+            <h4 class="text-lg md:text-xl font-headline font-bold group-hover:text-primary transition-colors" data-en="Society &amp; Culture" data-fr="Soci&eacute;t&eacute; et culture">Society &amp; Culture</h4>
+          </a>
+          <a href="./mission/" class="glass-card px-8 py-6 rounded-xl ghost-border ambient-shadow flex items-center justify-center text-center group hover:bg-surface-container-highest/50 transition-colors">
+            <h4 class="text-lg md:text-xl font-headline font-bold group-hover:text-primary transition-colors" data-en="Applied Research" data-fr="Recherche appliqu&eacute;e">Applied Research</h4>
+          </a>
+          <a href="./mission/" class="glass-card px-8 py-6 rounded-xl ghost-border ambient-shadow flex items-center justify-center text-center group hover:bg-surface-container-highest/50 transition-colors">
+            <h4 class="text-lg md:text-xl font-headline font-bold group-hover:text-primary transition-colors" data-en="Accessibility" data-fr="Accessibilit&eacute;">Accessibility</h4>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Credentials -->
+    <section class="py-24 md:py-32 bg-surface">
+      <div class="container mx-auto px-6 max-w-content">
+        <div class="text-center mb-12 md:mb-16">
+          <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Our Team" data-fr="Notre &eacute;quipe">Our Team</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="World-class expertise, Canadian purpose" data-fr="Une expertise de calibre mondial, une vocation canadienne">World-class expertise, Canadian purpose</h2>
+          <p class="text-lg text-on-surface-variant font-light max-w-2xl mx-auto" data-en="Our leadership team brings deep AI research credentials and chose to build for Canada &mdash; not a wrapper or rebrand, but original work rooted in Canadian communities." data-fr="Notre &eacute;quipe de direction apporte une expertise approfondie en recherche en IA et a choisi de b&acirc;tir pour le Canada &mdash; pas un emballage ou un changement de marque, mais un travail original ancr&eacute; dans les communaut&eacute;s canadiennes.">Our leadership team brings deep AI research credentials and chose to build for Canada &mdash; not a wrapper or rebrand, but original work rooted in Canadian communities.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-12">
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow text-center">
+            <span class="text-4xl md:text-5xl font-headline font-bold text-primary block mb-3">30+</span>
+            <span class="font-label text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-3" data-en="Years in AI" data-fr="Ann&eacute;es en IA">Years in AI</span>
+            <p class="text-on-surface-variant font-light text-sm" data-en="Combined experience across research, engineering, and deployment of AI systems at scale." data-fr="Exp&eacute;rience combin&eacute;e en recherche, ing&eacute;nierie et d&eacute;ploiement de syst&egrave;mes d'IA &agrave; grande &eacute;chelle.">Combined experience across research, engineering, and deployment of AI systems at scale.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow text-center">
+            <span class="text-4xl md:text-5xl font-headline font-bold text-primary block mb-3">MIT</span>
+            <span class="font-label text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-3" data-en="Research Background" data-fr="Formation en recherche">Research Background</span>
+            <p class="text-on-surface-variant font-light text-sm" data-en="Grounded in rigorous academic research at one of the world's leading institutions for artificial intelligence." data-fr="Ancr&eacute;e dans une recherche acad&eacute;mique rigoureuse dans l'une des institutions les plus respect&eacute;es au monde en intelligence artificielle.">Grounded in rigorous academic research at one of the world's leading institutions for artificial intelligence.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow text-center">
+            <span class="text-4xl md:text-5xl font-headline font-bold text-primary block mb-3">18</span>
+            <span class="font-label text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-3" data-en="Years in Silicon Valley" data-fr="Ann&eacute;es dans la Silicon Valley">Years in Silicon Valley</span>
+            <p class="text-on-surface-variant font-light text-sm" data-en="Built and shipped products at the heart of the global technology industry &mdash; then chose to bring that experience home to Canada." data-fr="A con&ccedil;u et livr&eacute; des produits au c&oelig;ur de l'industrie technologique mondiale &mdash; puis a choisi de ramener cette exp&eacute;rience au Canada.">Built and shipped products at the heart of the global technology industry &mdash; then chose to bring that experience home to Canada.</p>
+          </div>
+        </div>
+        <p class="text-center text-on-surface-variant font-light leading-relaxed max-w-3xl mx-auto" data-en="When Canada says it needs its own AI, the question is: built by whom? We are a real Canadian team with the depth to back it up &mdash; Silicon Valley and MIT pedigree, now fully committed to building sovereign, bilingual, culturally attuned AI for Canada." data-fr="Quand le Canada dit qu'il a besoin de sa propre IA, la question est : b&acirc;tie par qui? Nous sommes une vraie &eacute;quipe canadienne avec la profondeur pour le prouver &mdash; un p&eacute;digr&eacute;e de la Silicon Valley et du MIT, maintenant pleinement engag&eacute;e &agrave; b&acirc;tir une IA souveraine, bilingue et culturellement adapt&eacute;e pour le Canada.">When Canada says it needs its own AI, the question is: built by whom? We are a real Canadian team with the depth to back it up &mdash; Silicon Valley and MIT pedigree, now fully committed to building sovereign, bilingual, culturally attuned AI for Canada.</p>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-24 md:py-32 bg-surface-container-low">
+      <div class="container mx-auto px-6 max-w-content text-center">
+        <span aria-hidden="true" class="material-symbols-outlined text-primary/30 text-6xl mb-6 md:mb-8">format_quote</span>
+        <blockquote class="text-2xl md:text-4xl font-headline italic text-on-surface leading-relaxed mb-8 md:mb-10" data-en="&ldquo;Intelligence is not a generic resource; it is a cultural artifact. To import our intelligence is to import another culture's priorities.&rdquo;" data-fr="&laquo; L'intelligence n'est pas une ressource g&eacute;n&eacute;rique; c'est un artefact culturel. Importer notre intelligence, c'est importer les priorit&eacute;s d'une autre culture. &raquo;">&ldquo;Intelligence is not a generic resource; it is a cultural artifact. To import our intelligence is to import another culture's priorities.&rdquo;</blockquote>
+        <cite class="not-italic font-label text-sm tracking-widest uppercase text-primary font-bold" data-en="&mdash; canLM Research" data-fr="&mdash; Recherche canLM">&mdash; canLM Research</cite>
+      </div>
+    </section>
+
+    <!-- Latest Research -->
+    <section class="py-24 md:py-32 bg-surface">
+      <div class="container mx-auto px-6 max-w-content">
+        <div class="text-center mb-12 md:mb-16">
+          <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Research" data-fr="Recherche">Research</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Latest Research" data-fr="Derni&egrave;res recherches">Latest Research</h2>
+          <p class="text-lg text-on-surface-variant font-light" data-en="Our team investigates where AI and LLMs intersect with Canadian priorities." data-fr="Notre &eacute;quipe &eacute;tudie o&ugrave; l'IA et les LLM croisent les priorit&eacute;s canadiennes.">Our team investigates where AI and LLMs intersect with Canadian priorities.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="./research/ai-landscape-2026.html" class="glass-card rounded-xl ghost-border ambient-shadow overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="h-2 bg-gradient-to-r from-primary to-primary-container"></div>
+            <div class="p-6 md:p-8">
+              <div class="flex gap-2 mb-4">
+                <span class="text-[0.65rem] uppercase tracking-widest font-label text-primary bg-primary-fixed px-2.5 py-1 rounded-full" data-en="Sovereignty" data-fr="Souverainet&eacute;">Sovereignty</span>
+                <span class="text-[0.65rem] uppercase tracking-widest font-label text-primary bg-primary-fixed px-2.5 py-1 rounded-full" data-en="Policy" data-fr="Politique">Policy</span>
+              </div>
+              <h3 class="text-lg font-headline font-bold mb-3 group-hover:text-primary transition-colors" data-en="The AI Landscape in 2026: What Canadians Need to Know" data-fr="Le paysage de l'IA en 2026 : ce que les Canadiens doivent savoir">The AI Landscape in 2026: What Canadians Need to Know</h3>
+              <p class="text-sm text-on-surface-variant font-light mb-4" data-en="Four AI giants, the open-source revolution, and what it means for Canada." data-fr="Quatre g&eacute;ants de l'IA, la r&eacute;volution open-source et ce que cela signifie pour le Canada.">Four AI giants, the open-source revolution, and what it means for Canada.</p>
+              <span class="text-xs font-label text-primary uppercase tracking-widest">March 2026 <span class="group-hover:translate-x-1 inline-block transition-transform">&rarr;</span></span>
+            </div>
+          </a>
+          <a href="./research/seniors-ai.html" class="glass-card rounded-xl ghost-border ambient-shadow overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="h-2 bg-gradient-to-r from-primary-container to-secondary"></div>
+            <div class="p-6 md:p-8">
+              <div class="flex gap-2 mb-4">
+                <span class="text-[0.65rem] uppercase tracking-widest font-label text-primary bg-primary-fixed px-2.5 py-1 rounded-full" data-en="Accessibility" data-fr="Accessibilit&eacute;">Accessibility</span>
+                <span class="text-[0.65rem] uppercase tracking-widest font-label text-primary bg-primary-fixed px-2.5 py-1 rounded-full" data-en="Healthcare" data-fr="Sant&eacute;">Healthcare</span>
+              </div>
+              <h3 class="text-lg font-headline font-bold mb-3 group-hover:text-primary transition-colors" data-en="AI and Canada's Seniors: Building Technology That Includes Everyone" data-fr="L'IA et les a&icirc;n&eacute;s du Canada : b&acirc;tir une technologie qui inclut tout le monde">AI and Canada's Seniors: Building Technology That Includes Everyone</h3>
+              <p class="text-sm text-on-surface-variant font-light mb-4" data-en="Nearly one in five Canadians is over 65. AI can help &mdash; if we design it inclusively." data-fr="Pr&egrave;s d'un Canadien sur cinq a plus de 65 ans. L'IA peut aider &mdash; si nous la concevons inclusivement.">Nearly one in five Canadians is over 65. AI can help &mdash; if we design it inclusively.</p>
+              <span class="text-xs font-label text-primary uppercase tracking-widest">March 2026 <span class="group-hover:translate-x-1 inline-block transition-transform">&rarr;</span></span>
+            </div>
+          </a>
+          <a href="./research/sovereign-ai.html" class="glass-card rounded-xl ghost-border ambient-shadow overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="h-2 bg-gradient-to-r from-secondary to-tertiary"></div>
+            <div class="p-6 md:p-8">
+              <div class="flex gap-2 mb-4">
+                <span class="text-[0.65rem] uppercase tracking-widest font-label text-primary bg-primary-fixed px-2.5 py-1 rounded-full" data-en="Sovereignty" data-fr="Souverainet&eacute;">Sovereignty</span>
+                <span class="text-[0.65rem] uppercase tracking-widest font-label text-primary bg-primary-fixed px-2.5 py-1 rounded-full" data-en="Strategy" data-fr="Strat&eacute;gie">Strategy</span>
+              </div>
+              <h3 class="text-lg font-headline font-bold mb-3 group-hover:text-primary transition-colors" data-en="Why Canada Needs Its Own AI Strategy &mdash; And Why Now" data-fr="Pourquoi le Canada a besoin de sa propre strat&eacute;gie en IA &mdash; et pourquoi maintenant">Why Canada Needs Its Own AI Strategy &mdash; And Why Now</h3>
+              <p class="text-sm text-on-surface-variant font-light mb-4" data-en="Canada has the talent, the values, and the affordable technology to compete." data-fr="Le Canada a le talent, les valeurs et la technologie abordable pour &ecirc;tre comp&eacute;titif.">Canada has the talent, the values, and the affordable technology to compete.</p>
+              <span class="text-xs font-label text-primary uppercase tracking-widest">March 2026 <span class="group-hover:translate-x-1 inline-block transition-transform">&rarr;</span></span>
+            </div>
+          </a>
+        </div>
+        <div class="text-center mt-10">
+          <a href="./research/" class="text-primary font-label text-xs uppercase tracking-[0.1em] border-b border-primary/30 pb-1 hover:border-primary transition-all" data-en="View All Research &rarr;" data-fr="Voir toutes les recherches &rarr;">View All Research &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 md:py-32 bg-surface-container-low">
+      <div class="container mx-auto px-6 max-w-content">
+        <div class="text-center mb-12 md:mb-16">
+          <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Contact" data-fr="Contact">Contact</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Get in touch" data-fr="Nous joindre">Get in touch</h2>
+          <p class="text-lg text-on-surface-variant font-light" data-en="Interested in our research or exploring collaboration opportunities?" data-fr="Int&eacute;ress&eacute; par nos recherches ou des opportunit&eacute;s de collaboration?">Interested in our research or exploring collaboration opportunities?</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass-card p-8 rounded-xl ghost-border ambient-shadow text-center">
+            <h3 class="font-headline font-bold mb-2" data-en="General Inquiries" data-fr="Renseignements g&eacute;n&eacute;raux">General Inquiries</h3>
+            <p><a href="mailto:info@canlm.ca" class="text-primary hover:underline">info@canlm.ca</a></p>
+          </div>
+          <div class="glass-card p-8 rounded-xl ghost-border ambient-shadow text-center">
+            <h3 class="font-headline font-bold mb-2" data-en="Research" data-fr="Recherche">Research</h3>
+            <p><a href="mailto:research@canlm.ca" class="text-primary hover:underline">research@canlm.ca</a></p>
+          </div>
+          <div class="glass-card p-8 rounded-xl ghost-border ambient-shadow text-center">
+            <h3 class="font-headline font-bold mb-2" data-en="Location" data-fr="Emplacement">Location</h3>
+            <p class="text-on-surface-variant" data-en="Canada" data-fr="Canada">Canada</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter (hidden for now) -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface w-full py-12 md:py-16">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-site mx-auto gap-8">
+      <div class="text-center md:text-left">
+        <a href="./" class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors">canLM</a>
+        <p class="font-label text-xs uppercase tracking-[0.05em] text-primary mt-2" data-en="Canada's Applied AI Research" data-fr="Recherche appliqu&eacute;e en IA du Canada">Canada's Applied AI Research</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a href="./" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Home" data-fr="Accueil">Home</a>
+        <a href="./mission/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+        <a href="./research/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Research" data-fr="Recherche">Research</a>
+      </div>
+      <p class="font-label text-xs text-on-surface-variant/60">&copy; 2026 canLM</p>
+    </div>
+  </footer>
+
+  </div><!-- /frame inner -->
+  </div><!-- /frame outer -->
+
+  <script>
+    // canLM — Main JS (Ethereal Archive edition)
+    (function () {
+      // Language persistence
+      var savedLang = localStorage.getItem('canLM_lang');
+      if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
+        document.documentElement.lang = savedLang;
+        document.querySelectorAll('[data-' + savedLang + ']').forEach(function (el) {
+          if (el.hasAttribute('data-html')) {
+            el.innerHTML = el.getAttribute('data-' + savedLang);
+          } else {
+            el.textContent = el.getAttribute('data-' + savedLang);
+          }
+        });
+      }
+
+      // Mobile nav toggle
+      var toggle = document.getElementById('nav-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', function () {
+          var isOpen = mobileMenu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            mobileMenu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Language toggle (EN/FR) - all lang buttons (nav + mobile)
+      var langBtns = document.querySelectorAll('.lang-btn');
+      if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
+        langBtns.forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === savedLang);
+        });
+      }
+      langBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = this.getAttribute('data-lang');
+          langBtns.forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll('.lang-btn[data-lang="' + lang + '"]').forEach(function (b) {
+            b.classList.add('active');
+          });
+          document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+            if (el.hasAttribute('data-html')) {
+              el.innerHTML = el.getAttribute('data-' + lang);
+            } else {
+              el.textContent = el.getAttribute('data-' + lang);
+            }
+          });
+          document.documentElement.lang = lang;
+          localStorage.setItem('canLM_lang', lang);
+        });
+      });
+
+      // Newsletter signup (MVP: localStorage)
+      var form = document.getElementById('newsletter-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('newsletter-email').value.trim();
+          if (!email) return;
+          var subscribers = JSON.parse(localStorage.getItem('canLM_subscribers') || '[]');
+          if (subscribers.indexOf(email) === -1) {
+            subscribers.push(email);
+            localStorage.setItem('canLM_subscribers', JSON.stringify(subscribers));
+          }
+          document.getElementById('newsletter-email').value = '';
+          var success = document.getElementById('newsletter-success');
+          success.classList.add('show');
+          var lang = document.documentElement.lang || 'en';
+          if (success.getAttribute('data-' + lang)) {
+            success.textContent = success.getAttribute('data-' + lang);
+          }
+        });
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var href = this.getAttribute('href');
+          if (href === '#' || href === '') return;
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

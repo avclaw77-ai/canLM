@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Landscape in 2026 — canLM Research</title>
+  <meta name="description" content="A comprehensive look at the AI landscape in 2026: frontier models, open-source revolution, and what it means for Canada.">
+  <link rel="canonical" href="https://canlm.ca/research/ai-landscape-2026.html">
+  <meta property="og:title" content="The AI Landscape in 2026 — canLM Research">
+  <meta property="og:description" content="A comprehensive look at the AI landscape in 2026: frontier models, open-source revolution, and what it means for Canada.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://canlm.ca/research/ai-landscape-2026.html">
+  <meta property="og:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta property="og:site_name" content="canLM">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The AI Landscape in 2026 — canLM Research">
+  <meta name="twitter:description" content="A comprehensive look at the AI landscape in 2026: frontier models, open-source revolution, and what it means for Canada.">
+  <meta name="twitter:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed": "#fedad8",
+            "surface-container-high": "#ebe8e2",
+            "surface": "#fcf9f3",
+            "surface-dim": "#dcdad4",
+            "primary": "#705654",
+            "on-surface-variant": "#4f4443",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f3f0ea",
+            "surface-bright": "#fcf9f3",
+            "primary-fixed-dim": "#e1bfbc",
+            "surface-container-low": "#f6f3ed",
+            "surface-container": "#f0eee8",
+            "secondary": "#6b5a5a",
+            "on-primary-container": "#fffbff",
+            "on-background": "#1c1c18",
+            "tertiary": "#5c5c5c",
+            "inverse-surface": "#31312d",
+            "outline-variant": "#d3c3c1",
+            "primary-container": "#8a6e6c",
+            "outline": "#817473",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1c1c18",
+            "on-error": "#ffffff",
+            "background": "#fcf9f3",
+            "error": "#ba1a1a",
+            "surface-variant": "#e5e2dc"
+          },
+          fontFamily: {
+            "headline": ['"Noto Serif"', "Georgia", "serif"],
+            "body": ['"Manrope"', "system-ui", "sans-serif"],
+            "label": ['"Manrope"', "system-ui", "sans-serif"]
+          },
+          maxWidth: { "site": "70rem", "content": "64rem", "narrow": "48rem" },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .glass-nav { background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .ghost-border { border: 1px solid rgba(211,195,193,0.15); }
+    .ambient-shadow { box-shadow: 0 20px 50px rgba(28,28,24,0.06); }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; padding: 0.5rem 1rem; background: #705654; color: #fff; font-family: 'Manrope', sans-serif; }
+    .skip-link:focus { left: 0; }
+    html { scroll-behavior: smooth; }
+    .lang-btn { opacity: 0.5; transition: opacity 0.2s; }
+    .lang-btn.active { opacity: 1; }
+    *:focus-visible { outline: 2px solid #705654; outline-offset: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface font-body selection:bg-primary/20 antialiased">
+  <a href="#article" class="skip-link">Skip to content</a>
+
+  <!-- Layered Frame -->
+  <div class="min-h-screen p-3 md:p-6 lg:p-10">
+  <div class="mx-auto max-w-[1600px] bg-surface border border-outline-variant/20 shadow-2xl relative overflow-hidden min-h-[calc(100vh-1.5rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-5rem)]">
+
+  <!-- Floating Glass Navigation -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-site rounded-full glass-nav ghost-border shadow-[0_8px_32px_0_rgba(28,28,24,0.06)] flex justify-between items-center px-6 md:px-8 py-3 z-50">
+    <a href="/website/" class="text-xl font-bold font-headline text-on-surface hover:text-primary transition-colors">canLM</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="/website/" data-en="Home" data-fr="Accueil">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="/website/mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+      <a class="text-on-surface hover:text-on-surface transition-colors font-headline font-bold text-sm tracking-wide" href="/website/research/" data-en="Research" data-fr="Recherche">Research</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1 text-xs font-label uppercase tracking-widest text-on-surface-variant">
+        <button class="lang-btn active px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="en" aria-label="English">EN</button>
+        <span class="text-outline-variant">/</span>
+        <button class="lang-btn px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+      </div>
+      <button class="md:hidden flex flex-col gap-1.5 p-2" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-opacity"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl flex-col items-center justify-center gap-8 text-center" id="mobile-menu">
+    <a class="text-2xl font-headline text-on-surface" href="/website/" data-en="Home" data-fr="Accueil">Home</a>
+    <a class="text-2xl font-headline text-on-surface" href="/website/mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+    <a class="text-2xl font-headline text-on-surface" href="/website/research/" data-en="Research" data-fr="Recherche">Research</a>
+    <div class="flex items-center gap-2 text-sm font-label uppercase tracking-widest text-on-surface-variant mt-4">
+      <button class="lang-btn active px-3 py-1 rounded-full" data-lang="en" aria-label="English">EN</button>
+      <span class="text-outline-variant">/</span>
+      <button class="lang-btn px-3 py-1 rounded-full" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+    </div>
+  </div>
+
+  <!-- Article Hero -->
+  <header class="relative pt-32 pb-16 bg-surface-container-low overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none" aria-hidden="true">
+      <svg viewBox="0 0 400 400" class="w-full h-full text-primary">
+        <circle cx="200" cy="200" r="150" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="10 5" />
+        <circle cx="200" cy="200" r="100" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="5 10" />
+        <path d="M200,50 L200,350 M50,200 L350,200" stroke="currentColor" stroke-width="0.5" />
+      </svg>
+    </div>
+    <div class="container mx-auto px-6 relative z-10 max-w-content">
+      <a href="/website/research/" class="inline-flex items-center gap-2 text-sm text-primary hover:text-on-surface transition-colors font-medium mb-8" data-en="&larr; Back to Research" data-fr="&larr; Retour &agrave; la recherche">&larr; Back to Research</a>
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="inline-block px-4 py-1 rounded-full bg-white/40 backdrop-blur-md ghost-border text-[0.7rem] uppercase tracking-[0.1em] font-label text-primary font-semibold" data-en="Sovereignty" data-fr="Souverainet&eacute;">Sovereignty</span>
+        <span class="inline-block px-4 py-1 rounded-full bg-white/40 backdrop-blur-md ghost-border text-[0.7rem] uppercase tracking-[0.1em] font-label text-primary font-semibold" data-en="Policy" data-fr="Politique">Policy</span>
+        <span class="text-sm text-on-surface-variant font-light" data-en="March 2026" data-fr="Mars 2026">March 2026</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-on-surface mb-6 leading-tight" data-en="The AI Landscape in 2026: What Canadians Need to Know" data-fr="Le paysage de l'IA en 2026 : ce que les Canadiens doivent savoir">The AI Landscape in 2026: What Canadians Need to Know</h1>
+      <p class="text-xs uppercase tracking-widest font-label font-semibold text-primary mb-4">canLM Research</p>
+      <p class="text-xl text-on-surface-variant font-light leading-relaxed max-w-2xl" data-en="The world of artificial intelligence is moving faster than ever. Here's what's changed, what it means for Canada, and where we go from here." data-fr="Le monde de l'intelligence artificielle avance plus vite que jamais. Voici ce qui a chang&eacute;, ce que &ccedil;a veut dire pour le Canada, et o&ugrave; on s'en va.">The world of artificial intelligence is moving faster than ever. Here's what's changed, what it means for Canada, and where we go from here.</p>
+    </div>
+  </header>
+
+  <!-- Article Body -->
+  <article id="article" class="container mx-auto px-6 py-16 md:py-24">
+    <div class="max-w-content mx-auto space-y-8">
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface" data-en="The New Frontier: Four AI Giants" data-fr="La nouvelle fronti&egrave;re : quatre g&eacute;ants de l'IA">The New Frontier: Four AI Giants</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="As of early 2026, four major AI models define the cutting edge &mdash; and none of them dominates every category. The era of one-size-fits-all AI is over. Specialization is the new reality." data-fr="Au d&eacute;but de 2026, quatre grands mod&egrave;les d'IA d&eacute;finissent la fine pointe &mdash; et aucun ne domine toutes les cat&eacute;gories. L'&egrave;re de l'IA passe-partout est termin&eacute;e. La sp&eacute;cialisation est la nouvelle r&eacute;alit&eacute;.">As of early 2026, four major AI models define the cutting edge &mdash; and none of them dominates every category. The era of one-size-fits-all AI is over. Specialization is the new reality.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="&lt;strong&gt;OpenAI's GPT-5.4&lt;/strong&gt; leads in coding and boasts the broadest tool ecosystem. &lt;strong&gt;Anthropic's Claude Opus 4.6&lt;/strong&gt; offers the largest context window (1 million tokens) and the most natural prose. &lt;strong&gt;Google's Gemini 3.1 Pro&lt;/strong&gt; tops reasoning benchmarks and processes video natively. &lt;strong&gt;xAI's Grok 4&lt;/strong&gt; matches the best on coding tasks at aggressive pricing." data-fr="&lt;strong&gt;GPT-5.4 d'OpenAI&lt;/strong&gt; m&egrave;ne en programmation et offre le plus large &eacute;cosyst&egrave;me d'outils. &lt;strong&gt;Claude Opus 4.6 d'Anthropic&lt;/strong&gt; propose la plus grande fen&ecirc;tre de contexte (1 million de tokens) et la prose la plus naturelle. &lt;strong&gt;Gemini 3.1 Pro de Google&lt;/strong&gt; domine les benchmarks de raisonnement et traite la vid&eacute;o nativement. &lt;strong&gt;Grok 4 de xAI&lt;/strong&gt; &eacute;gale les meilleurs en programmation avec des prix agressifs."><strong>OpenAI's GPT-5.4</strong> leads in coding and boasts the broadest tool ecosystem. <strong>Anthropic's Claude Opus 4.6</strong> offers the largest context window (1 million tokens) and the most natural prose. <strong>Google's Gemini 3.1 Pro</strong> tops reasoning benchmarks and processes video natively. <strong>xAI's Grok 4</strong> matches the best on coding tasks at aggressive pricing.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="What's striking isn't which model is &quot;best&quot; &mdash; it's that &lt;em&gt;no single model is best at everything&lt;/em&gt;. Organizations now choose their AI partner based on specific needs, not brand loyalty." data-fr="Ce qui frappe, c'est pas quel mod&egrave;le est &laquo; le meilleur &raquo; &mdash; c'est qu'&lt;em&gt;aucun mod&egrave;le n'est le meilleur dans tout&lt;/em&gt;. Les organisations choisissent maintenant leur partenaire IA selon leurs besoins sp&eacute;cifiques, pas par fid&eacute;lit&eacute; &agrave; une marque.">What's striking isn't which model is "best" &mdash; it's that <em>no single model is best at everything</em>. Organizations now choose their AI partner based on specific needs, not brand loyalty.</p>
+
+      <div class="overflow-x-auto rounded-2xl ghost-border ambient-shadow">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-surface-container-low">
+            <tr>
+              <th scope="col" class="px-6 py-4 font-headline font-bold text-on-surface" data-en="Model" data-fr="Mod&egrave;le">Model</th>
+              <th scope="col" class="px-6 py-4 font-headline font-bold text-on-surface" data-en="Best For" data-fr="Meilleur pour">Best For</th>
+              <th scope="col" class="px-6 py-4 font-headline font-bold text-on-surface" data-en="Context Window" data-fr="Fen&ecirc;tre de contexte">Context Window</th>
+              <th scope="col" class="px-6 py-4 font-headline font-bold text-on-surface" data-en="Input Cost (per 1M tokens)" data-fr="Co&ucirc;t d'entr&eacute;e (par 1M tokens)">Input Cost (per 1M tokens)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/10">
+            <tr class="bg-surface">
+              <td class="px-6 py-4 font-medium">GPT-5.4</td>
+              <td class="px-6 py-4 text-on-surface-variant" data-en="Broad ecosystem, coding" data-fr="Large &eacute;cosyst&egrave;me, programmation">Broad ecosystem, coding</td>
+              <td class="px-6 py-4 text-on-surface-variant">256K</td>
+              <td class="px-6 py-4 text-on-surface-variant">$2.50</td>
+            </tr>
+            <tr class="bg-surface-container-low/50">
+              <td class="px-6 py-4 font-medium">Claude Opus 4.6</td>
+              <td class="px-6 py-4 text-on-surface-variant" data-en="Long documents, natural writing" data-fr="Longs documents, &eacute;criture naturelle">Long documents, natural writing</td>
+              <td class="px-6 py-4 text-on-surface-variant">1M</td>
+              <td class="px-6 py-4 text-on-surface-variant">$5.00</td>
+            </tr>
+            <tr class="bg-surface">
+              <td class="px-6 py-4 font-medium">Gemini 3.1 Pro</td>
+              <td class="px-6 py-4 text-on-surface-variant" data-en="Reasoning, video analysis" data-fr="Raisonnement, analyse vid&eacute;o">Reasoning, video analysis</td>
+              <td class="px-6 py-4 text-on-surface-variant">1M</td>
+              <td class="px-6 py-4 text-on-surface-variant">$2.00</td>
+            </tr>
+            <tr class="bg-surface-container-low/50">
+              <td class="px-6 py-4 font-medium">Grok 4</td>
+              <td class="px-6 py-4 text-on-surface-variant" data-en="Coding, competitive pricing" data-fr="Programmation, prix comp&eacute;titifs">Coding, competitive pricing</td>
+              <td class="px-6 py-4 text-on-surface-variant">256K</td>
+              <td class="px-6 py-4 text-on-surface-variant">$2.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="Open-Source AI: The Great Equalizer" data-fr="L'IA open source : le grand &eacute;galisateur">Open-Source AI: The Great Equalizer</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Perhaps the most important story of 2026 is happening outside the big labs. Open-source AI models have closed the gap dramatically. Performance that cost millions of dollars in 2024 now runs for pennies." data-fr="L'histoire la plus importante de 2026 se passe peut-&ecirc;tre en dehors des grands labos. Les mod&egrave;les d'IA open source ont combl&eacute; l'&eacute;cart de fa&ccedil;on dramatique. La performance qui co&ucirc;tait des millions en 2024 fonctionne maintenant pour des pinottes.">Perhaps the most important story of 2026 is happening outside the big labs. Open-source AI models have closed the gap dramatically. Performance that cost millions of dollars in 2024 now runs for pennies.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="&lt;strong&gt;DeepSeek-V3.2&lt;/strong&gt;, an MIT-licensed model from China, matches GPT-4o on major benchmarks &mdash; and was trained for roughly $6 million, compared to an estimated $100 million for GPT-4. Its API costs are 90% cheaper than frontier alternatives." data-fr="&lt;strong&gt;DeepSeek-V3.2&lt;/strong&gt;, un mod&egrave;le sous licence MIT de la Chine, &eacute;gale GPT-4o sur les principaux benchmarks &mdash; et a &eacute;t&eacute; entra&icirc;n&eacute; pour environ 6 millions $, compar&eacute; &agrave; un estim&eacute; de 100 millions $ pour GPT-4. Ses co&ucirc;ts d'API sont 90 % moins chers que les alternatives de pointe."><strong>DeepSeek-V3.2</strong>, an MIT-licensed model from China, matches GPT-4o on major benchmarks &mdash; and was trained for roughly $6 million, compared to an estimated $100 million for GPT-4. Its API costs are 90% cheaper than frontier alternatives.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="&lt;strong&gt;Meta's Llama 4&lt;/strong&gt; introduced a 10-million-token context window variant. &lt;strong&gt;Alibaba's Qwen 3&lt;/strong&gt; excels in 29+ languages. &lt;strong&gt;France's Mistral&lt;/strong&gt; continues to offer compact, efficient models optimized for European deployment." data-fr="&lt;strong&gt;Llama 4 de Meta&lt;/strong&gt; a introduit une variante avec une fen&ecirc;tre de contexte de 10 millions de tokens. &lt;strong&gt;Qwen 3 d'Alibaba&lt;/strong&gt; excelle dans 29+ langues. &lt;strong&gt;Mistral de France&lt;/strong&gt; continue d'offrir des mod&egrave;les compacts et efficaces optimis&eacute;s pour le d&eacute;ploiement europ&eacute;en."><strong>Meta's Llama 4</strong> introduced a 10-million-token context window variant. <strong>Alibaba's Qwen 3</strong> excels in 29+ languages. <strong>France's Mistral</strong> continues to offer compact, efficient models optimized for European deployment.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="For Canada, this open-source revolution creates a genuine pathway to AI sovereignty. We no longer need to build a frontier model from scratch &mdash; we can adapt and specialize existing open models for Canadian needs, in both official languages, at a fraction of historic costs." data-fr="Pour le Canada, cette r&eacute;volution open source cr&eacute;e un vrai chemin vers la souverainet&eacute; en IA. On n'a plus besoin de b&acirc;tir un mod&egrave;le de pointe &agrave; partir de z&eacute;ro &mdash; on peut adapter et sp&eacute;cialiser des mod&egrave;les ouverts existants pour les besoins canadiens, dans les deux langues officielles, &agrave; une fraction des co&ucirc;ts historiques.">For Canada, this open-source revolution creates a genuine pathway to AI sovereignty. We no longer need to build a frontier model from scratch &mdash; we can adapt and specialize existing open models for Canadian needs, in both official languages, at a fraction of historic costs.</p>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="What AI Still Can't Do" data-fr="Ce que l'IA ne peut toujours pas faire">What AI Still Can't Do</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Despite remarkable progress, fundamental limitations persist:" data-fr="Malgr&eacute; des progr&egrave;s remarquables, des limites fondamentales persistent :">Despite remarkable progress, fundamental limitations persist:</p>
+      <ul class="list-disc pl-6 space-y-4 text-on-surface-variant font-light leading-relaxed">
+        <li data-en="&lt;strong&gt;Hallucination is provably unsolvable in general.&lt;/strong&gt; Recent theoretical work shows that no computable language model can be universally correct over open-ended queries. This isn't a bug that will be fixed &mdash; it's a mathematical limitation." data-fr="&lt;strong&gt;L'hallucination est d&eacute;montrablement insoluble en g&eacute;n&eacute;ral.&lt;/strong&gt; Des travaux th&eacute;oriques r&eacute;cents montrent qu'aucun mod&egrave;le de langage calculable ne peut &ecirc;tre universellement correct sur des requ&ecirc;tes ouvertes. C'est pas un bug qui va &ecirc;tre corrig&eacute; &mdash; c'est une limitation math&eacute;matique."><strong>Hallucination is provably unsolvable in general.</strong> Recent theoretical work shows that no computable language model can be universally correct over open-ended queries. This isn't a bug that will be fixed &mdash; it's a mathematical limitation.</li>
+        <li data-en="&lt;strong&gt;Long-context usage is misleading.&lt;/strong&gt; Models advertise 1M-token windows, but effective utilization scales sub-linearly. A model with a 1M-token window doesn't actually use all that context equally well." data-fr="&lt;strong&gt;L'utilisation du long contexte est trompeuse.&lt;/strong&gt; Les mod&egrave;les annoncent des fen&ecirc;tres d'un million de tokens, mais l'utilisation effective &eacute;volue de fa&ccedil;on sous-lin&eacute;aire. Un mod&egrave;le avec une fen&ecirc;tre d'un million de tokens n'utilise pas tout ce contexte de mani&egrave;re &eacute;gale."><strong>Long-context usage is misleading.</strong> Models advertise 1M-token windows, but effective utilization scales sub-linearly. A model with a 1M-token window doesn't actually use all that context equally well.</li>
+        <li data-en="&lt;strong&gt;Domain expertise remains shallow.&lt;/strong&gt; In healthcare, law, and engineering, LLMs still underperform human specialists. Generic knowledge doesn't replace deep domain expertise." data-fr="&lt;strong&gt;L'expertise de domaine reste superficielle.&lt;/strong&gt; En sant&eacute;, en droit et en ing&eacute;nierie, les LLM performent encore en dessous des sp&eacute;cialistes humains. Le savoir g&eacute;n&eacute;rique ne remplace pas l'expertise approfondie."><strong>Domain expertise remains shallow.</strong> In healthcare, law, and engineering, LLMs still underperform human specialists. Generic knowledge doesn't replace deep domain expertise.</li>
+        <li data-en="&lt;strong&gt;Reasoning breaks down on multi-step tasks.&lt;/strong&gt; Ask an AI to count the letters in &quot;strawberry&quot; and it may still get it wrong. Error compounds across steps." data-fr="&lt;strong&gt;Le raisonnement plante sur les t&acirc;ches &agrave; &eacute;tapes multiples.&lt;/strong&gt; Demande &agrave; une IA de compter les lettres dans &laquo; strawberry &raquo; et elle peut encore se tromper. L'erreur s'accumule d'&eacute;tape en &eacute;tape."><strong>Reasoning breaks down on multi-step tasks.</strong> Ask an AI to count the letters in "strawberry" and it may still get it wrong. Error compounds across steps.</li>
+      </ul>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="These aren't temporary gaps &mdash; they're the defining challenges of the next generation of AI research." data-fr="Ce sont pas des lacunes temporaires &mdash; ce sont les d&eacute;fis qui d&eacute;finiront la prochaine g&eacute;n&eacute;ration de recherche en IA.">These aren't temporary gaps &mdash; they're the defining challenges of the next generation of AI research.</p>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="Three Trends That Matter for Canada" data-fr="Trois tendances importantes pour le Canada">Three Trends That Matter for Canada</h2>
+
+      <h3 class="text-xl font-headline font-bold text-on-surface" data-en="1. AI Agents Are Going Mainstream" data-fr="1. Les agents IA deviennent courants">1. AI Agents Are Going Mainstream</h3>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="By end of 2026, Gartner predicts 40% of enterprise applications will embed AI agents (up from less than 5% in 2025). These are AI systems that can plan, execute multi-step tasks, and use tools autonomously. The reliability of these agents remains the critical unsolved problem." data-fr="D'ici la fin 2026, Gartner pr&eacute;dit que 40 % des applications d'entreprise int&eacute;greront des agents IA (contre moins de 5 % en 2025). Ce sont des syst&egrave;mes d'IA capables de planifier, d'ex&eacute;cuter des t&acirc;ches &agrave; &eacute;tapes multiples et d'utiliser des outils de fa&ccedil;on autonome. La fiabilit&eacute; de ces agents reste le probl&egrave;me critique non r&eacute;solu.">By end of 2026, Gartner predicts 40% of enterprise applications will embed AI agents (up from less than 5% in 2025). These are AI systems that can plan, execute multi-step tasks, and use tools autonomously. The reliability of these agents remains the critical unsolved problem.</p>
+
+      <h3 class="text-xl font-headline font-bold text-on-surface" data-en="2. Cost Deflation Is Accelerating" data-fr="2. La d&eacute;flation des co&ucirc;ts acc&eacute;l&egrave;re">2. Cost Deflation Is Accelerating</h3>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="GPT-4-level performance now costs 1/100th of what it did in 2024. Open-source MoE (Mixture of Experts) architectures are making high performance accessible to organizations of any size. AI is becoming a utility, not a luxury." data-fr="La performance de niveau GPT-4 co&ucirc;te maintenant 1/100e de ce qu'elle co&ucirc;tait en 2024. Les architectures open source MoE (Mixture of Experts) rendent la haute performance accessible aux organisations de toute taille. L'IA devient un service public, pas un luxe.">GPT-4-level performance now costs 1/100th of what it did in 2024. Open-source MoE (Mixture of Experts) architectures are making high performance accessible to organizations of any size. AI is becoming a utility, not a luxury.</p>
+
+      <h3 class="text-xl font-headline font-bold text-on-surface" data-en="3. On-Device AI Is Here" data-fr="3. L'IA sur appareil est arriv&eacute;e">3. On-Device AI Is Here</h3>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Small models (1-7 billion parameters) running locally on phones and laptops are practical and improving rapidly. For privacy-sensitive applications &mdash; healthcare, legal, government &mdash; this changes the calculus entirely." data-fr="Des petits mod&egrave;les (1-7 milliards de param&egrave;tres) qui roulent localement sur les t&eacute;l&eacute;phones et les portables sont pratiques et s'am&eacute;liorent rapidement. Pour les applications sensibles &agrave; la vie priv&eacute;e &mdash; sant&eacute;, droit, gouvernement &mdash; &ccedil;a change compl&egrave;tement la donne.">Small models (1-7 billion parameters) running locally on phones and laptops are practical and improving rapidly. For privacy-sensitive applications &mdash; healthcare, legal, government &mdash; this changes the calculus entirely.</p>
+
+      <h2 class="text-3xl font-headline font-bold text-on-surface pt-4" data-en="What This Means for Canada" data-fr="Ce que &ccedil;a veut dire pour le Canada">What This Means for Canada</h2>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Canada has a choice: consume AI built by and for other markets, or invest in adapting these powerful tools for Canadian needs. The open-source revolution makes the second option more feasible than ever." data-fr="Le Canada a un choix : consommer de l'IA b&acirc;tie par et pour d'autres march&eacute;s, ou investir dans l'adaptation de ces outils puissants aux besoins canadiens. La r&eacute;volution open source rend la deuxi&egrave;me option plus r&eacute;aliste que jamais.">Canada has a choice: consume AI built by and for other markets, or invest in adapting these powerful tools for Canadian needs. The open-source revolution makes the second option more feasible than ever.</p>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="Key opportunities include:" data-fr="Les principales opportunit&eacute;s comprennent :">Key opportunities include:</p>
+      <ul class="list-disc pl-6 space-y-4 text-on-surface-variant font-light leading-relaxed">
+        <li data-en="&lt;strong&gt;Bilingual AI systems&lt;/strong&gt; that serve English and French speakers equally well" data-fr="&lt;strong&gt;Des syst&egrave;mes d'IA bilingues&lt;/strong&gt; qui servent aussi bien les anglophones que les francophones"><strong>Bilingual AI systems</strong> that serve English and French speakers equally well</li>
+        <li data-en="&lt;strong&gt;Domain-specialized models&lt;/strong&gt; for Canadian healthcare, law, and public services" data-fr="&lt;strong&gt;Des mod&egrave;les sp&eacute;cialis&eacute;s par domaine&lt;/strong&gt; pour la sant&eacute;, le droit et les services publics canadiens"><strong>Domain-specialized models</strong> for Canadian healthcare, law, and public services</li>
+        <li data-en="&lt;strong&gt;Sovereign AI infrastructure&lt;/strong&gt; that keeps sensitive data within Canadian borders" data-fr="&lt;strong&gt;Une infrastructure d'IA souveraine&lt;/strong&gt; qui garde les donn&eacute;es sensibles &agrave; l'int&eacute;rieur des fronti&egrave;res canadiennes"><strong>Sovereign AI infrastructure</strong> that keeps sensitive data within Canadian borders</li>
+        <li data-en="&lt;strong&gt;Accessible AI&lt;/strong&gt; designed for Canada's diverse population &mdash; including our rapidly growing seniors population and remote communities" data-fr="&lt;strong&gt;Une IA accessible&lt;/strong&gt; con&ccedil;ue pour la population diversifi&eacute;e du Canada &mdash; incluant notre population a&icirc;n&eacute;e en croissance rapide et les communaut&eacute;s &eacute;loign&eacute;es"><strong>Accessible AI</strong> designed for Canada's diverse population &mdash; including our rapidly growing seniors population and remote communities</li>
+      </ul>
+      <p class="text-on-surface-variant font-light leading-relaxed" data-en="The technology exists. The question is whether we'll seize the moment." data-fr="La technologie existe. La question est de savoir si on va saisir le moment.">The technology exists. The question is whether we'll seize the moment.</p>
+
+      <div class="glass-card ghost-border rounded-2xl p-8 mt-12">
+        <p class="text-sm text-on-surface-variant font-light leading-relaxed" data-en="This article is based on the canLM LLM Landscape Survey, March 2026. For the full technical report, contact &lt;a href=&quot;mailto:research@canlm.ca&quot;&gt;research@canlm.ca&lt;/a&gt;." data-fr="Cet article est bas&eacute; sur le sondage canLM sur le paysage des LLM, mars 2026. Pour le rapport technique complet, contactez &lt;a href=&quot;mailto:research@canlm.ca&quot;&gt;research@canlm.ca&lt;/a&gt;.">This article is based on the canLM LLM Landscape Survey, March 2026. For the full technical report, contact <a href="mailto:research@canlm.ca" class="text-primary hover:underline">research@canlm.ca</a>.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="bg-surface w-full py-12 md:py-16">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-site mx-auto gap-8">
+      <div class="text-center md:text-left">
+        <a href="/website/" class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors">canLM</a>
+        <p class="font-label text-xs uppercase tracking-[0.05em] text-primary mt-2" data-en="Canada's Applied AI Research" data-fr="Recherche appliqu&eacute;e en IA du Canada">Canada's Applied AI Research</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a href="/website/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Home" data-fr="Accueil">Home</a>
+        <a href="/website/mission/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+        <a href="/website/research/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Research" data-fr="Recherche">Research</a>
+      </div>
+      <p class="font-label text-xs text-on-surface-variant/60">&copy; 2026 canLM</p>
+    </div>
+  </footer>
+
+  </div><!-- /frame inner -->
+  </div><!-- /frame outer -->
+
+  <script>
+    (function () {
+      // Mobile nav toggle
+      var toggle = document.getElementById('nav-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', function () {
+          var isOpen = mobileMenu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            mobileMenu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Language toggle
+      var currentLang = 'en';
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          currentLang = this.getAttribute('data-lang');
+          document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll('[data-lang="' + currentLang + '"]').forEach(function (b) { b.classList.add('active'); });
+          document.querySelectorAll('[data-en][data-fr]').forEach(function (el) {
+            var text = el.getAttribute('data-' + currentLang);
+            if (text) el.innerHTML = text;
+          });
+          document.documentElement.lang = currentLang === 'fr' ? 'fr' : 'en';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

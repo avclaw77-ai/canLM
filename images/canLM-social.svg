@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#faf9f7"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#2c5f4a"/>
+  <text x="100" y="280" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="72" font-weight="500" fill="#1c1c28" letter-spacing="-2">canLM</text>
+  <text x="100" y="340" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="28" font-weight="400" fill="#4a4a5a">Canada's Applied AI Research</text>
+  <text x="100" y="390" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="20" font-weight="400" fill="#8a8a96">Recherche appliqu&#233;e en IA du Canada</text>
+  <rect x="100" y="430" width="60" height="3" fill="#2c5f4a"/>
+  <text x="100" y="480" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="16" font-weight="500" fill="#2c5f4a" letter-spacing="2">canlm.ca</text>
+</svg>

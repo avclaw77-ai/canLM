@@ -1,0 +1,198 @@
+/* ============================================
+   canLM — Article Page Styles (v5 Coastal)
+   ============================================ */
+
+.article {
+  padding: 130px 0 80px;
+}
+
+.article .container {
+  max-width: var(--container-narrow);
+}
+
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 450;
+  color: var(--color-accent);
+  margin-bottom: 40px;
+  transition: color 0.15s;
+}
+
+.article-back:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.article-header {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.article-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  padding: 2px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+
+.article-date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.article-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.article-author {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.article-lede {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* Article Body */
+.article-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-top: 8px;
+}
+
+.article-body h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.article-body p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 16px 0 24px 24px;
+}
+
+.article-body li {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.article-body strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.article-body em {
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Table */
+.article-table-wrapper {
+  overflow-x: auto;
+  margin: 24px 0 32px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.article-table thead {
+  background: var(--color-surface);
+}
+
+.article-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-table td {
+  padding: 10px 16px;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.article-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Footer Note */
+.article-footer-note {
+  margin-top: 48px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-accent-light);
+  border-radius: 0 6px 6px 0;
+}
+
+.article-footer-note p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .article {
+    padding: 110px 0 60px;
+  }
+
+  .article-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .article-body h2 {
+    font-size: 1.2rem;
+    margin-top: 36px;
+  }
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign AI — canLM Focus Area</title>
+  <meta name="description" content="canLM's Sovereign AI focus area: advancing Canada's position in the global AI landscape through technological sovereignty and data independence.">
+  <link rel="canonical" href="https://canlm.ca/focus/sovereign-ai.html">
+  <meta property="og:title" content="Sovereign AI — canLM Focus Area">
+  <meta property="og:description" content="Advancing Canada's position in the global AI landscape through technological sovereignty and data independence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://canlm.ca/focus/sovereign-ai.html">
+  <meta property="og:image" content="https://canlm.ca/website/images/canLM-social.svg">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta property="og:site_name" content="canLM">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed": "#fedad8",
+            "surface-container-high": "#ebe8e2",
+            "surface": "#fcf9f3",
+            "surface-dim": "#dcdad4",
+            "primary": "#705654",
+            "on-surface-variant": "#4f4443",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary": "#ffffff",
+            "surface-bright": "#fcf9f3",
+            "primary-fixed-dim": "#e1bfbc",
+            "surface-container-low": "#f6f3ed",
+            "surface-container": "#f0eee8",
+            "secondary": "#6b5a5a",
+            "on-primary-container": "#fffbff",
+            "on-background": "#1c1c18",
+            "tertiary": "#5c5c5c",
+            "inverse-surface": "#31312d",
+            "outline-variant": "#d3c3c1",
+            "primary-container": "#8a6e6c",
+            "outline": "#817473",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1c1c18",
+            "on-error": "#ffffff",
+            "background": "#fcf9f3",
+            "error": "#ba1a1a",
+            "surface-variant": "#e5e2dc"
+          },
+          fontFamily: {
+            "headline": ['"Noto Serif"', "Georgia", "serif"],
+            "body": ['"Manrope"', "system-ui", "sans-serif"],
+            "label": ['"Manrope"', "system-ui", "sans-serif"]
+          },
+          maxWidth: { "site": "70rem", "content": "64rem" },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .glass-nav { background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .ghost-border { border: 1px solid rgba(211,195,193,0.15); }
+    .ambient-shadow { box-shadow: 0 20px 50px rgba(28,28,24,0.06); }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; padding: 0.5rem 1rem; background: #705654; color: #fff; font-family: 'Manrope', sans-serif; }
+    .skip-link:focus { left: 0; }
+    html { scroll-behavior: smooth; }
+    .lang-btn { opacity: 0.5; transition: opacity 0.2s; }
+    .lang-btn.active { opacity: 1; }
+    *:focus-visible { outline: 2px solid #705654; outline-offset: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .pill-active { background: rgba(112,86,84,0.1); color: #705654; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface font-body selection:bg-primary/20 antialiased">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="min-h-screen p-3 md:p-6 lg:p-10">
+  <div class="mx-auto max-w-[1600px] bg-surface border border-outline-variant/20 shadow-2xl relative overflow-hidden min-h-[calc(100vh-1.5rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-5rem)]">
+
+  <!-- Glass Nav -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-site rounded-full glass-nav ghost-border shadow-[0_8px_32px_0_rgba(28,28,24,0.06)] flex justify-between items-center px-6 md:px-8 py-3 z-50">
+    <a href="/website/" class="text-xl font-bold font-headline text-on-surface hover:text-primary transition-colors">canLM</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="/website/" data-en="Home" data-fr="Accueil">Home</a>
+      <a class="text-on-surface hover:text-on-surface transition-colors font-headline font-bold text-sm tracking-wide" href="/website/mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="/website/research/" data-en="Research" data-fr="Recherche">Research</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1 text-xs font-label uppercase tracking-widest text-on-surface-variant">
+        <button class="lang-btn active px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="en" aria-label="English">EN</button>
+        <span class="text-outline-variant">/</span>
+        <button class="lang-btn px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+      </div>
+      <button class="md:hidden flex flex-col gap-1.5 p-2" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="w-5 h-0.5 bg-on-surface rounded-full"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl flex-col items-center justify-center gap-8 text-center" id="mobile-menu">
+    <a class="text-2xl font-headline text-on-surface" href="/website/" data-en="Home" data-fr="Accueil">Home</a>
+    <a class="text-2xl font-headline text-on-surface" href="/website/mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+    <a class="text-2xl font-headline text-on-surface" href="/website/research/" data-en="Research" data-fr="Recherche">Research</a>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <header class="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-surface-container-low overflow-hidden">
+      <div class="container mx-auto px-6 max-w-content relative z-10">
+        <a href="/website/mission/" class="inline-flex items-center gap-1.5 text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-8 hover:underline">&larr; Focus Areas</a>
+        <h1 class="text-4xl md:text-6xl font-headline font-bold text-on-surface leading-tight mb-6" data-en="Sovereign AI" data-fr="IA souveraine">Sovereign AI</h1>
+        <p class="text-lg md:text-xl text-on-surface-variant font-light leading-relaxed max-w-3xl" data-en="Building Canada's technological independence in artificial intelligence &mdash; so our data, our models, and our future stay in Canadian hands." data-fr="B&acirc;tir l'ind&eacute;pendance technologique du Canada en intelligence artificielle &mdash; pour que nos donn&eacute;es, nos mod&egrave;les et notre avenir restent entre des mains canadiennes.">Building Canada's technological independence in artificial intelligence &mdash; so our data, our models, and our future stay in Canadian hands.</p>
+      </div>
+    </header>
+
+    <!-- 6-Pill Sub-Navigation -->
+    <div class="bg-surface border-b border-outline-variant/10">
+      <div class="container mx-auto px-6 max-w-content">
+        <div class="flex flex-wrap gap-2 py-4">
+          <a href="sovereign-ai.html" class="pill-active px-4 py-2 rounded-full text-xs font-label uppercase tracking-widest transition-colors hover:bg-primary/10" data-en="Sovereign AI" data-fr="IA souveraine">Sovereign AI</a>
+          <a href="linguistic-tuning.html" class="text-on-surface-variant hover:text-primary px-4 py-2 rounded-full text-xs font-label uppercase tracking-widest transition-colors hover:bg-primary/10" data-en="Linguistic Tuning" data-fr="Ajustement linguistique">Linguistic Tuning</a>
+          <a href="indigenous-communities.html" class="text-on-surface-variant hover:text-primary px-4 py-2 rounded-full text-xs font-label uppercase tracking-widest transition-colors hover:bg-primary/10" data-en="Indigenous Communities" data-fr="Communaut&eacute;s autochtones">Indigenous Communities</a>
+          <a href="society-culture.html" class="text-on-surface-variant hover:text-primary px-4 py-2 rounded-full text-xs font-label uppercase tracking-widest transition-colors hover:bg-primary/10" data-en="Society &amp; Culture" data-fr="Soci&eacute;t&eacute; et culture">Society &amp; Culture</a>
+          <a href="applied-research.html" class="text-on-surface-variant hover:text-primary px-4 py-2 rounded-full text-xs font-label uppercase tracking-widest transition-colors hover:bg-primary/10" data-en="Applied Research" data-fr="Recherche appliqu&eacute;e">Applied Research</a>
+          <a href="accessibility.html" class="text-on-surface-variant hover:text-primary px-4 py-2 rounded-full text-xs font-label uppercase tracking-widest transition-colors hover:bg-primary/10" data-en="Accessibility" data-fr="Accessibilit&eacute;">Accessibility</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto px-6 max-w-content">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          <div class="lg:col-span-2 space-y-12">
+            <!-- Why This Matters -->
+            <div>
+              <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Why this matters" data-fr="Pourquoi c'est important">Why this matters</span>
+              <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface mb-6" data-en="Canada cannot afford to depend on foreign AI" data-fr="Le Canada ne peut pas se permettre de d&eacute;pendre de l'IA &eacute;trang&egrave;re">Canada cannot afford to depend on foreign AI</h2>
+              <p class="text-on-surface-variant font-light leading-relaxed mb-4" data-en="Nations around the world are racing to build AI systems that reflect their values, protect their data, and serve their citizens. The European Union, the UAE, India, and Japan have all launched sovereign AI initiatives. Canada &mdash; despite being the birthplace of modern deep learning &mdash; risks falling behind." data-fr="Les nations du monde entier se pr&eacute;cipitent pour b&acirc;tir des syst&egrave;mes d'IA qui refl&egrave;tent leurs valeurs, prot&egrave;gent leurs donn&eacute;es et servent leurs citoyens. L'Union europ&eacute;enne, les &Eacute;mirats arabes unis, l'Inde et le Japon ont tous lanc&eacute; des initiatives d'IA souveraine. Le Canada &mdash; malgr&eacute; &ecirc;tre le berceau du deep learning moderne &mdash; risque de prendre du retard.">Nations around the world are racing to build AI systems that reflect their values, protect their data, and serve their citizens. The European Union, the UAE, India, and Japan have all launched sovereign AI initiatives. Canada &mdash; despite being the birthplace of modern deep learning &mdash; risks falling behind.</p>
+              <p class="text-on-surface-variant font-light leading-relaxed mb-4" data-en="Our government data, healthcare systems, legal documents, and public services increasingly depend on models built outside Canada, under foreign laws. When sensitive Canadian information is processed abroad, Canadians lose control over how it is used, stored, and governed. This is not just a technology problem &mdash; it is a matter of national sovereignty." data-fr="Nos donn&eacute;es gouvernementales, nos syst&egrave;mes de sant&eacute;, nos documents juridiques et nos services publics d&eacute;pendent de plus en plus de mod&egrave;les b&acirc;tis &agrave; l'ext&eacute;rieur du Canada, sous des lois &eacute;trang&egrave;res. Quand des informations canadiennes sensibles sont trait&eacute;es &agrave; l'&eacute;tranger, les Canadiens perdent le contr&ocirc;le sur leur utilisation, leur stockage et leur gouvernance. Ce n'est pas seulement un probl&egrave;me technologique &mdash; c'est une question de souverainet&eacute; nationale.">Our government data, healthcare systems, legal documents, and public services increasingly depend on models built outside Canada, under foreign laws. When sensitive Canadian information is processed abroad, Canadians lose control over how it is used, stored, and governed. This is not just a technology problem &mdash; it is a matter of national sovereignty.</p>
+              <p class="text-on-surface-variant font-light leading-relaxed mb-4" data-en="The good news: open-source AI has made sovereignty achievable. Training costs have plummeted, and fine-tuning existing models for Canadian contexts is now both affordable and effective. The window is open &mdash; but it will not stay open forever." data-fr="La bonne nouvelle : l'IA open source a rendu la souverainet&eacute; r&eacute;alisable. Les co&ucirc;ts d'entra&icirc;nement se sont effondr&eacute;s, et l'ajustement de mod&egrave;les existants pour les contextes canadiens est maintenant abordable et efficace. La fen&ecirc;tre est ouverte &mdash; mais elle ne restera pas ouverte pour toujours.">The good news: open-source AI has made sovereignty achievable. Training costs have plummeted, and fine-tuning existing models for Canadian contexts is now both affordable and effective. The window is open &mdash; but it will not stay open forever.</p>
+            </div>
+            <!-- Initiatives -->
+            <div>
+              <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="What we plan to do" data-fr="Ce que nous comptons faire">What we plan to do</span>
+              <h2 class="text-2xl md:text-3xl font-headline font-bold text-on-surface mb-8" data-en="Our initiatives" data-fr="Nos initiatives">Our initiatives</h2>
+              <div class="space-y-6">
+                <div class="flex gap-5 items-start">
+                  <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">01</span>
+                  <div>
+                    <h3 class="text-lg font-headline font-bold mb-2" data-en="Canadian Data Sovereignty Framework" data-fr="Cadre de souverainet&eacute; des donn&eacute;es canadiennes">Canadian Data Sovereignty Framework</h3>
+                    <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Developing guidelines and best practices for processing sensitive Canadian data with AI systems that respect PIPEDA, the Official Languages Act, and provincial privacy laws." data-fr="D&eacute;velopper des lignes directrices et des meilleures pratiques pour le traitement des donn&eacute;es canadiennes sensibles avec des syst&egrave;mes d'IA qui respectent la LPRPD&Eacute;, la Loi sur les langues officielles et les lois provinciales sur la vie priv&eacute;e.">Developing guidelines and best practices for processing sensitive Canadian data with AI systems that respect PIPEDA, the Official Languages Act, and provincial privacy laws.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">02</span>
+                  <div>
+                    <h3 class="text-lg font-headline font-bold mb-2" data-en="Open-Source Model Adaptation" data-fr="Adaptation de mod&egrave;les open source">Open-Source Model Adaptation</h3>
+                    <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Research into fine-tuning leading open-source models (DeepSeek, Llama, Qwen, Mistral) for Canadian legal, healthcare, and government applications using Canadian datasets." data-fr="Recherche sur l'ajustement de mod&egrave;les open source de pointe (DeepSeek, Llama, Qwen, Mistral) pour les applications juridiques, de sant&eacute; et gouvernementales canadiennes &agrave; l'aide de jeux de donn&eacute;es canadiens.">Research into fine-tuning leading open-source models (DeepSeek, Llama, Qwen, Mistral) for Canadian legal, healthcare, and government applications using Canadian datasets.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">03</span>
+                  <div>
+                    <h3 class="text-lg font-headline font-bold mb-2" data-en="Compute Infrastructure Assessment" data-fr="&Eacute;valuation de l'infrastructure de calcul">Compute Infrastructure Assessment</h3>
+                    <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Mapping Canada's current AI compute capacity and identifying gaps that need to be filled for sovereign AI deployment at scale." data-fr="Cartographier la capacit&eacute; actuelle de calcul en IA du Canada et identifier les lacunes &agrave; combler pour le d&eacute;ploiement de l'IA souveraine &agrave; grande &eacute;chelle.">Mapping Canada's current AI compute capacity and identifying gaps that need to be filled for sovereign AI deployment at scale.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">04</span>
+                  <div>
+                    <h3 class="text-lg font-headline font-bold mb-2" data-en="Policy Research &amp; Recommendations" data-fr="Recherche et recommandations politiques">Policy Research &amp; Recommendations</h3>
+                    <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Publishing research that informs Canadian policymakers on AI regulation, data governance, and strategic investment in domestic AI capabilities." data-fr="Publier des recherches qui informent les d&eacute;cideurs canadiens sur la r&eacute;glementation de l'IA, la gouvernance des donn&eacute;es et les investissements strat&eacute;giques dans les capacit&eacute;s nationales en IA.">Publishing research that informs Canadian policymakers on AI regulation, data governance, and strategic investment in domestic AI capabilities.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Sidebar -->
+          <aside class="space-y-8">
+            <div class="glass-card ghost-border p-8 rounded-xl">
+              <h3 class="font-headline font-bold mb-2" data-en="Chair" data-fr="Pr&eacute;sident(e)">Chair</h3>
+              <p class="text-primary font-medium" data-en="To be announced" data-fr="&Agrave; annoncer">To be announced</p>
+              <p class="text-on-surface-variant font-light text-sm mt-2" data-en="Each focus area is led by a chair person who coordinates with the Canadian ecosystem for insight, input, and feedback." data-fr="Chaque domaine d'int&eacute;r&ecirc;t est dirig&eacute; par un(e) pr&eacute;sident(e) qui coordonne avec l'&eacute;cosyst&egrave;me canadien pour obtenir des perspectives, des contributions et de la r&eacute;troaction.">Each focus area is led by a chair person who coordinates with the Canadian ecosystem for insight, input, and feedback.</p>
+            </div>
+            <div class="glass-card ghost-border p-8 rounded-xl">
+              <h3 class="font-headline font-bold mb-4" data-en="Related Research" data-fr="Recherche connexe">Related Research</h3>
+              <ul class="space-y-3">
+                <li><a href="/website/research/sovereign-ai.html" class="text-primary hover:underline text-sm font-medium" data-en="Why Canada Needs Its Own AI Strategy" data-fr="Pourquoi le Canada a besoin de sa propre strat&eacute;gie en IA">Why Canada Needs Its Own AI Strategy</a></li>
+                <li><a href="/website/research/ai-landscape-2026.html" class="text-primary hover:underline text-sm font-medium" data-en="The AI Landscape in 2026" data-fr="Le paysage de l'IA en 2026">The AI Landscape in 2026</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-surface w-full py-12 md:py-16">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-site mx-auto gap-8">
+      <div class="text-center md:text-left">
+        <a href="/website/" class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors">canLM</a>
+        <p class="font-label text-xs uppercase tracking-[0.05em] text-primary mt-2" data-en="Canada's Applied AI Research" data-fr="Recherche appliqu&eacute;e en IA du Canada">Canada's Applied AI Research</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a href="/website/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors">Home</a>
+        <a href="/website/mission/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors">Focus Areas</a>
+        <a href="/website/research/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors">Research</a>
+      </div>
+      <p class="font-label text-xs text-on-surface-variant/60">&copy; 2026 canLM</p>
+    </div>
+  </footer>
+  </div></div>
+
+  <script>
+    (function () {
+      var savedLang = localStorage.getItem('canLM_lang');
+      if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
+        document.documentElement.lang = savedLang;
+        document.querySelectorAll('[data-' + savedLang + ']').forEach(function (el) {
+          if (el.hasAttribute('data-html')) { el.innerHTML = el.getAttribute('data-' + savedLang); } else { el.textContent = el.getAttribute('data-' + savedLang); }
+        });
+      }
+      var toggle = document.getElementById('nav-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', function () {
+          var isOpen = mobileMenu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { mobileMenu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); });
+        });
+      }
+      var langBtns = document.querySelectorAll('.lang-btn');
+      if (savedLang) langBtns.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === savedLang); });
+      langBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = this.getAttribute('data-lang');
+          langBtns.forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll('.lang-btn[data-lang="' + lang + '"]').forEach(function (b) { b.classList.add('active'); });
+          document.querySelectorAll('[data-' + lang + ']').forEach(function (el) { if (el.hasAttribute('data-html')) { el.innerHTML = el.getAttribute('data-' + lang); } else { el.textContent = el.getAttribute('data-' + lang); } });
+          document.documentElement.lang = lang;
+          localStorage.setItem('canLM_lang', lang);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
