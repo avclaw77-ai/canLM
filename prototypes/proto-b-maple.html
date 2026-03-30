@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype B — Maple Warmth | canLM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffcf8;
+      --bg-warm: #fef7ef;
+      --bg-card: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #4a4a60;
+      --text-muted: #8a8a9a;
+      --accent: #c23d2e;
+      --accent-warm: #e8512d;
+      --accent-gold: #d4920a;
+      --accent-rust: #a03020;
+      --accent-light: #fef0ea;
+      --border: #ede8e0;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --max-w: 1100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+
+    /* RATIONALE */
+    .rationale {
+      background: var(--bg-warm);
+      border-bottom: 2px solid var(--border);
+      padding: 32px 0;
+    }
+    .rationale .container { max-width: 800px; }
+    .rationale h2 { font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); margin-bottom: 12px; }
+    .rationale p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px; }
+    .rationale strong { color: var(--text); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; margin-right: 6px; }
+    .tag-font { background: #fef0ea; color: var(--accent); }
+    .tag-color { background: #fdf3e0; color: var(--accent-gold); }
+    .tag-anim { background: #fce4e1; color: var(--accent-rust); }
+
+    /* NAV */
+    nav { padding: 20px 0; border-bottom: 1px solid var(--border); }
+)*    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hero-bg canvas { width: 100%; height: 100%; }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+      line-height: 1.12;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 420px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: var(--font-body);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--accent-rust); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(194, 61, 46, 0.25); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* SECTIONS */
+    .section { padding: 100px 0; }
+    .section-warm { background: var(--bg-warm); }
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* FOCUS CARDS */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .focus-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
+      position: relative;
+    }
+    .focus-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(194, 61, 46, 0.08);
+      transform: translateY(-3px);
+    }
+    .focus-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--accent);
+      opacity: 0.3;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .focus-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .focus-card p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+    /* RESEARCH */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .research-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .research-card-img {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+    .rci-1 { background: linear-gradient(135deg, #fef0ea, #fdf3e0); }
+    .rci-2 { background: linear-gradient(135deg, #f0f7ef, #eaf0fe); }
+    .rci-3 { background: linear-gradient(135deg, #fdf3e0, #fef0ea); }
+    .research-card-img .rc-icon {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .research-card-body { padding: 24px; }
+    .research-tag-wrap { margin-bottom: 12px; }
+    .r-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-right: 12px; }
+    .research-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .research-card p { color: var(--text-secondary); font-size: 0.88rem; }
+    .research-card-meta { display: block; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* FOOTER */
+    footer { padding: 48px 0; border-top: 1px solid var(--border); }
+    footer .container { display: flex; justify-content: space-between; align-items: center; }
+    footer p { color: var(--text-muted); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      footer .container { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DESIGN RATIONALE -->
+  <section class="rationale">
+    <div class="container">
+      <h2>Prototype B — Maple Warmth</h2>
+      <p><strong>Concept:</strong> A light, warm palette inspired by Canadian autumn — rich reds, amber golds, and warm cream backgrounds. This direction embraces <strong>boldness and confidence</strong> while remaining approachable. The hero features animated floating maple-inspired organic shapes.</p>
+      <p><strong>Mood:</strong> Warm, inviting, distinctly Canadian. The colour palette says "we are proud of who we are." Red connects to the Canadian flag without being literal. Gold adds prestige.</p>
+      <p>
+        <span class="tag tag-font">DM Serif Display + DM Sans</span>
+        <span class="tag tag-color">Warm cream / Canadian red / Amber gold / Rust</span>
+        <span class="tag tag-anim">Floating organic shapes, leaf-inspired geometry</span>
+      </p>
+      <p><strong>Why this works for non-academics:</strong> Warm colours are psychologically inviting. The serif headings feel authoritative (like a trusted newspaper) while DM Sans body text is friendly and readable. Nobody feels intimidated by autumn colours.</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">canLM</a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Focus Areas</a>
+        <a href="#">Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><canvas id="hero-canvas"></canvas></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-eyebrow">Applied AI Research</span>
+          <h1>Building AI that <em>understands</em> Canada</h1>
+          <p>We produce research, models, and content rooted in Canadian cultures, languages, and communities — making AI approachable for every Canadian.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Read our research →</a>
+            <a href="#" class="btn btn-outline">Our mission</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="mg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#c23d2e" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#d4920a" stop-opacity="0.08"/>
+              </linearGradient>
+              <linearGradient id="mg2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#d4920a" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#c23d2e" stop-opacity="0.06"/>
+              </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="150" fill="url(#mg1)" stroke="#c23d2e" stroke-opacity="0.1" stroke-width="1">
+              <animate attributeName="r" values="150;155;150" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="200" cy="200" r="110" fill="url(#mg2)" stroke="#d4920a" stroke-opacity="0.08" stroke-width="1">
+              <animate attributeName="r" values="110;115;110" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="200" cy="200" r="70" fill="none" stroke="#c23d2e" stroke-opacity="0.12" stroke-width="1">
+              <animate attributeName="r" values="70;73;70" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Orbiting dots -->
+            <circle cx="200" cy="50" r="6" fill="#c23d2e" opacity="0.2">
+              <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="340" cy="200" r="5" fill="#d4920a" opacity="0.2">
+              <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="-360 200 200" dur="16s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="120" cy="320" r="4" fill="#c23d2e" opacity="0.15">
+              <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="24s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Center -->
+            <circle cx="200" cy="200" r="8" fill="#c23d2e" opacity="0.25">
+              <animate attributeName="opacity" values="0.25;0.4;0.25" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <text x="200" y="206" text-anchor="middle" font-family="DM Serif Display" font-size="14" fill="#c23d2e" opacity="0.5">AI</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section class="section section-warm">
+    <div class="container">
+      <span class="section-eyebrow">Focus Areas</span>
+      <h2>Where Canadian AI needs us most</h2>
+      <p class="section-desc">Six pillars of research, each led by a dedicated chair.</p>
+      <div class="focus-grid">
+        <a href="#" class="focus-card"><span class="focus-num">01</span><h3>Sovereign AI</h3><p>Ensuring Canada controls its AI destiny — data independence and compute strategy.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">02</span><h3>Linguistic Tuning</h3><p>Optimizing models for Québécois French and Canadian English.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">03</span><h3>Accessibility</h3><p>Making AI work for every Canadian, from first-time users to seniors.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">04</span><h3>Indigenous Communities</h3><p>Supporting language preservation and knowledge systems.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">05</span><h3>Society & Culture</h3><p>Understanding AI's impact on Canadian democracy and institutions.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">06</span><h3>Applied Research</h3><p>Turning findings into real products and policy decisions.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section">
+    <div class="container">
+      <span class="section-eyebrow">Research</span>
+      <h2>Latest research</h2>
+      <p class="section-desc">Our team investigates where AI and LLMs intersect with Canadian priorities.</p>
+      <div class="research-grid">
+        <a href="#" class="research-card">
+          <div class="research-card-img rci-1"><span class="rc-icon">📊</span></div>
+          <div class="research-card-body">
+            <div class="research-tag-wrap"><span class="r-tag">Sovereignty</span><span class="r-tag">Policy</span></div>
+            <h3>The AI Landscape in 2026: What Canadians Need to Know</h3>
+            <p>Four AI giants, the open-source revolution, and what it means for Canada.</p>
+            <span class="research-card-meta">March 2026 →</span>
+          </div>
+        </a>
+        <a href="#" class="research-card">
+          <div class="research-card-img rci-2"><span class="rc-icon">🤝</span></div>
+          <div class="research-card-body">
+            <div class="research-tag-wrap"><span class="r-tag">Accessibility</span><span class="r-tag">Healthcare</span></div>
+            <h3>AI and Canada's Seniors: Building Technology That Includes Everyone</h3>
+            <p>Nearly one in five Canadians is over 65. AI can help — if we design it inclusively.</p>
+            <span class="research-card-meta">March 2026 →</span>
+          </div>
+        </a>
+        <a href="#" class="research-card">
+          <div class="research-card-img rci-3"><span class="rc-icon">🛡️</span></div>
+          <div class="research-card-body">
+            <div class="research-tag-wrap"><span class="r-tag">Sovereignty</span><span class="r-tag">Strategy</span></div>
+            <h3>Why Canada Needs Its Own AI Strategy — And Why Now</h3>
+            <p>Canada has the talent, the values, and the affordable technology to compete.</p>
+            <span class="research-card-meta">March 2026 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="#" class="logo">canLM</a>
+      <p>© <script>document.write(new Date().getFullYear())</script> canLM — Canada's Applied AI Research</p>
+    </div>
+  </footer>
+
+  <script>
+    // Floating organic shapes
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, time = 0;
+    function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const shapes = [];
+    for (let i = 0; i < 15; i++) {
+      shapes.push({
+        x: Math.random() * 1.2 - 0.1,
+        y: Math.random() * 1.2 - 0.1,
+        r: 20 + Math.random() * 60,
+        speed: 0.2 + Math.random() * 0.4,
+        phase: Math.random() * Math.PI * 2,
+        color: Math.random() > 0.5 ? 'rgba(194, 61, 46, 0.04)' : 'rgba(212, 146, 10, 0.04)',
+        drift: (Math.random() - 0.5) * 0.001
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      shapes.forEach(s => {
+        const x = s.x * w + Math.sin(time * s.speed + s.phase) * 30;
+        const y = s.y * h + Math.cos(time * s.speed * 0.7 + s.phase) * 20;
+        ctx.beginPath();
+        ctx.arc(x, y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = s.color;
+        ctx.fill();
+        s.x += s.drift;
+        if (s.x > 1.2) s.x = -0.1;
+        if (s.x < -0.2) s.x = 1.1;
+      });
+      time += 0.01;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

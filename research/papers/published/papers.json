@@ -1,4 +1,102 @@
 {
-  "en": [],
-  "fr": []
+  "en": [
+    {
+      "title": "Indigenous Communities and Artificial Intelligence in Canada: Data Sovereignty, Language Revitalization, and Ethical Frameworks",
+      "tags": ["Indigenous", "AI Ethics", "Data Sovereignty"],
+      "date": "March 2026",
+      "pdf": "./en/research-paper-indigenous-communities-ai.pdf"
+    },
+    {
+      "title": "Canadian AI Policy Tracker: AIDA, Provincial Strategies, and Budget 2026",
+      "tags": ["Policy", "AI Governance"],
+      "date": "March 2026",
+      "pdf": "./en/research-paper-canadian-ai-policy-tracker.pdf"
+    },
+    {
+      "title": "A Canadian Framework for Responsible Youth AI Engagement",
+      "tags": ["Youth", "AI Safety", "Framework"],
+      "date": "March 2026",
+      "pdf": "./en/research-paper-responsible-youth-ai-engagement.pdf"
+    },
+    {
+      "title": "Youth AI Interaction Framework: Preserving Cognitive Development in the Age of Intelligent Machines",
+      "tags": ["Youth", "Cognitive Development", "AI"],
+      "date": "March 2026",
+      "pdf": "./en/research-paper-youth-ai-interaction-framework.pdf"
+    },
+    {
+      "title": "AI Accessibility for Youth & Late Adopters in Canada: Barriers, Frameworks, and Pathways to Inclusion",
+      "tags": ["Accessibility", "Youth", "Inclusion"],
+      "date": "March 2026",
+      "pdf": "./en/research-paper-ai-accessibility-youth-late-adopters.pdf"
+    },
+    {
+      "title": "How Well Do Frontier LLMs Handle Canadian English? A Nuance Analysis",
+      "tags": ["LLM", "Canadian English", "Evaluation"],
+      "date": "March 2026",
+      "pdf": "./en/research-canadian-english-nuance-analysis.pdf"
+    },
+    {
+      "title": "Canadian Officials on AI Sovereignty: Quotes, Policies, and Statements",
+      "tags": ["Sovereignty", "Policy", "AI"],
+      "date": "March 2026",
+      "pdf": "./en/research-canadian-officials-ai-sovereignty-quotes.pdf"
+    },
+    {
+      "title": "Indigenous Perspectives on AI and Youth Knowledge Transmission",
+      "tags": ["Indigenous", "Youth", "Knowledge"],
+      "date": "March 2026",
+      "pdf": "./en/research-indigenous-ai-youth-knowledge-transmission.pdf"
+    }
+  ],
+  "fr": [
+    {
+      "title": "Les communautés autochtones et l'intelligence artificielle au Canada : souveraineté des données, revitalisation linguistique et cadres éthiques",
+      "tags": ["Autochtones", "Éthique IA", "Souveraineté"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-communautes-autochtones-ia-fr.pdf"
+    },
+    {
+      "title": "Suivi des politiques canadiennes en intelligence artificielle : la LIAD, les stratégies provinciales et le budget 2026",
+      "tags": ["Politiques", "Gouvernance IA"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-suivi-politiques-ia-canadiennes-fr.pdf"
+    },
+    {
+      "title": "Un cadre canadien pour l'engagement responsable des jeunes envers l'IA",
+      "tags": ["Jeunesse", "Sécurité IA", "Cadre"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-engagement-responsable-jeunes-ia-fr.pdf"
+    },
+    {
+      "title": "Cadre d'interaction jeunes-IA : Préserver le développement cognitif à l'ère des machines intelligentes",
+      "tags": ["Jeunesse", "Développement cognitif", "IA"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-cadre-interaction-jeunes-ia-fr.pdf"
+    },
+    {
+      "title": "Accessibilité de l'IA pour les jeunes et les adoptants tardifs au Canada : obstacles, cadres et voies vers l'inclusion",
+      "tags": ["Accessibilité", "Jeunesse", "Inclusion"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-accessibilite-ia-jeunes-adoptants-tardifs-fr.pdf"
+    },
+    {
+      "title": "Dans quelle mesure les grands modèles de langue de pointe maîtrisent-ils l'anglais canadien? Une analyse des nuances",
+      "tags": ["LLM", "Anglais canadien", "Évaluation"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-analyse-nuances-anglais-canadien-fr.pdf"
+    },
+    {
+      "title": "Responsables canadiens sur la souveraineté en IA : citations, politiques et déclarations",
+      "tags": ["Souveraineté", "Politiques", "IA"],
+      "date": "Mars 2026",
+      "pdf": "./fr/research-canadian-officials-ai-sovereignty-quotes-fr.pdf"
+    },
+    {
+      "title": "Perspectives autochtones sur l'IA et la transmission des savoirs aux jeunes",
+      "tags": ["Autochtones", "Jeunesse", "Savoirs"],
+      "date": "Mars 2026",
+      "pdf": "./fr/recherche-transmission-savoirs-autochtones-ia-jeunesse-fr.pdf"
+    }
+  ]
 }

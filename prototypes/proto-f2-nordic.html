@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype F2 — Nordic Light | canLM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafbfd;
+      --bg-warm: #f5f7fb;
+      --bg-card: #ffffff;
+      --text: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #9ca3af;
+      --accent: #1e40af;
+      --accent-mid: #3b82f6;
+      --accent-pale: #eff6ff;
+      --border: #e5e7eb;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --max-w: 1040px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+
+    /* RATIONALE */
+    .rationale {
+      background: var(--accent-pale);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .rationale .container { max-width: 780px; }
+    .rationale h2 { font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); margin-bottom: 10px; }
+    .rationale p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 8px; }
+    .rationale strong { color: var(--text); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 500; margin-right: 6px; }
+    .tag-font { background: #dbeafe; color: var(--accent); }
+    .tag-color { background: #e0f2fe; color: #075985; }
+    .tag-anim { background: #f0fdf4; color: #166534; }
+
+    /* NAV */
+    nav {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 1.35rem; color: var(--text); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.01em; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO — extremely minimal, Anthropic-style */
+    .hero {
+      padding: 140px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-anim {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-anim canvas { width: 100%; height: 100%; }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-inner {
+      max-width: 580px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 28px;
+      color: var(--text);
+      letter-spacing: -0.025em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-mid);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+      font-family: var(--font-body);
+    }
+    .btn-link:hover { gap: 10px; color: var(--accent); }
+    .btn-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--text); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* MISSION */
+    .mission {
+      padding: 100px 0;
+    }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .mission-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+    .mission-text h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .mission-text p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* FOCUS — simple numbered list */
+    .focus {
+      padding: 100px 0;
+      background: var(--bg-warm);
+    }
+    .focus-header {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      margin-bottom: 56px;
+    }
+    .focus-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+    .focus h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: -0.01em;
+    }
+    .focus-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+    .focus-item {
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .focus-item:nth-child(odd) { border-right: 1px solid var(--border); }
+    .focus-item:nth-child(1), .focus-item:nth-child(2) { border-top: 1px solid var(--border); }
+    .focus-item:hover { background: rgba(255,255,255,0.7); }
+    .focus-item-num {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--accent);
+      opacity: 0.3;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .focus-item h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .focus-item p { color: var(--text-secondary); font-size: 0.83rem; line-height: 1.55; }
+
+    /* RESEARCH */
+    .research { padding: 100px 0; }
+    .research-header {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .research-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+    .research h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: -0.01em;
+    }
+    .research-list { display: flex; flex-direction: column; }
+    .research-item {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .research-item:first-child { border-top: 1px solid var(--border); }
+    .research-item:hover { padding-left: 8px; }
+    .research-date { font-size: 0.82rem; color: var(--text-muted); }
+    .research-item h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+    .research-arrow { color: var(--text-muted); transition: all 0.2s; }
+    .research-item:hover .research-arrow { transform: translateX(3px); color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+    footer .container { display: flex; justify-content: space-between; align-items: center; }
+    footer p { color: var(--text-muted); font-size: 0.82rem; }
+    footer .logo { font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 80px 0 60px; }
+      .mission-grid { grid-template-columns: 1fr; gap: 16px; }
+      .focus-header { grid-template-columns: 1fr; gap: 16px; }
+      .focus-list { grid-template-columns: 1fr; }
+      .focus-item:nth-child(odd) { border-right: none; }
+      .focus-item:nth-child(2) { border-top: none; }
+      .research-header { grid-template-columns: 1fr; gap: 16px; }
+      .research-item { grid-template-columns: 1fr; gap: 4px; }
+      .research-date, .research-arrow { display: none; }
+      footer .container { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DESIGN RATIONALE -->
+  <section class="rationale">
+    <div class="container">
+      <h2>Prototype F2 — Nordic Light</h2>
+      <p><strong>Concept:</strong> Maximum restraint, closest to <strong>Anthropic's aesthetic</strong>. Left-aligned hero with enormous serif type. Content organized in a magazine-style two-column grid (label | content). The animation is barely there — a slow, almost imperceptible drift of pale blue light behind the hero. Every element earns its place. Nothing decorative.</p>
+      <p><strong>Mood:</strong> Authoritative, calm, confident. This is the design equivalent of a quiet room with one perfect painting. It trusts the typography and words to carry the brand, not visual effects. The restraint itself communicates intelligence.</p>
+      <p>
+        <span class="tag tag-font">DM Serif Display + DM Sans (from Maple)</span>
+        <span class="tag tag-color">Near-white / Ice blue / Deep navy accents</span>
+        <span class="tag tag-anim">Barely-there ambient light drift</span>
+      </p>
+      <p><strong>Why this works:</strong> Anthropic's site succeeds because it doesn't try hard. This prototype follows that principle — the large italic serif says everything. The two-column layout (label left, content right) gives the page a publication quality. Focus areas use a clean numbered grid instead of cards. Research is a simple list. Everything breathes.</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">canLM</a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Focus Areas</a>
+        <a href="#">Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-anim"><canvas id="hero-canvas"></canvas></div>
+    <div class="container">
+      <div class="hero-inner">
+        <h1>AI research<br><em>for Canada,</em><br>by Canadians</h1>
+        <p>We produce research, models, and content rooted in Canadian cultures, languages, and communities.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-link">Read our research →</a>
+          <a href="#" class="btn-text">About our mission</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container">
+
+  <!-- MISSION -->
+  <section class="mission">
+    <div class="container">
+      <div class="mission-grid">
+        <span class="mission-label">Our Mission</span>
+        <div class="mission-text">
+          <h2>Making AI approachable for every Canadian</h2>
+          <p>Canada has world-class AI talent, strong democratic values, and a multilingual, multicultural population. We believe these strengths should shape how AI develops — not just in labs, but in communities, classrooms, and homes across the country.</p>
+          <p>canLM is an applied AI research organization focused on producing public research, tools, and content that help Canadians understand and benefit from advances in artificial intelligence and large language models.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS AREAS -->
+  <section class="focus">
+    <div class="container">
+      <div class="focus-header">
+        <span class="focus-label">Focus Areas</span>
+        <h2>Six pillars of research</h2>
+      </div>
+      <div class="focus-list">
+        <a href="#" class="focus-item">
+          <span class="focus-item-num">01</span>
+          <div><h3>Sovereign AI</h3><p>Data independence and Canadian compute strategy.</p></div>
+        </a>
+        <a href="#" class="focus-item">
+          <span class="focus-item-num">02</span>
+          <div><h3>Linguistic Tuning</h3><p>Québécois French, Canadian English, and Indigenous languages.</p></div>
+        </a>
+        <a href="#" class="focus-item">
+          <span class="focus-item-num">03</span>
+          <div><h3>Accessibility</h3><p>AI for every Canadian, from first-time users to seniors.</p></div>
+        </a>
+        <a href="#" class="focus-item">
+          <span class="focus-item-num">04</span>
+          <div><h3>Indigenous Communities</h3><p>Language preservation and respectful knowledge systems.</p></div>
+        </a>
+        <a href="#" class="focus-item">
+          <span class="focus-item-num">05</span>
+          <div><h3>Society & Culture</h3><p>AI's impact on democracy, media, and institutions.</p></div>
+        </a>
+        <a href="#" class="focus-item">
+          <span class="focus-item-num">06</span>
+          <div><h3>Applied Research</h3><p>Real products, policy, and community resources.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="research">
+    <div class="container">
+      <div class="research-header">
+        <span class="research-label">Research</span>
+        <h2>Latest publications</h2>
+      </div>
+      <div class="research-list">
+        <a href="#" class="research-item">
+          <span class="research-date">Mar 2026</span>
+          <h3>The AI Landscape in 2026: What Canadians Need to Know</h3>
+          <span class="research-arrow">→</span>
+        </a>
+        <a href="#" class="research-item">
+          <span class="research-date">Mar 2026</span>
+          <h3>AI and Canada's Seniors: Building Technology That Includes Everyone</h3>
+          <span class="research-arrow">→</span>
+        </a>
+        <a href="#" class="research-item">
+          <span class="research-date">Mar 2026</span>
+          <h3>Why Canada Needs Its Own AI Strategy — And Why Now</h3>
+          <span class="research-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="#" class="logo">canLM</a>
+      <p>© <script>document.write(new Date().getFullYear())</script> canLM — Canadian AI Networks</p>
+    </div>
+  </footer>
+
+  <script>
+    // Barely-there ambient light — very subtle
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, time = 0;
+
+    function resize() {
+      w = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      h = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    resize();
+    window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+    const cw = () => canvas.offsetWidth;
+    const ch = () => canvas.offsetHeight;
+
+    function draw() {
+      ctx.clearRect(0, 0, cw(), ch());
+
+      // Two very large, very faint light patches
+      const x1 = cw() * 0.7 + Math.sin(time * 0.3) * 60;
+      const y1 = ch() * 0.3 + Math.cos(time * 0.2) * 30;
+      const r1 = Math.min(cw(), ch()) * 0.5;
+
+      const g1 = ctx.createRadialGradient(x1, y1, 0, x1, y1, r1);
+      g1.addColorStop(0, 'rgba(59, 130, 246, 0.04)');
+      g1.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, cw(), ch());
+
+      const x2 = cw() * 0.3 + Math.cos(time * 0.25) * 50;
+      const y2 = ch() * 0.6 + Math.sin(time * 0.35) * 40;
+      const r2 = Math.min(cw(), ch()) * 0.4;
+
+      const g2 = ctx.createRadialGradient(x2, y2, 0, x2, y2, r2);
+      g2.addColorStop(0, 'rgba(30, 64, 175, 0.025)');
+      g2.addColorStop(1, 'rgba(30, 64, 175, 0)');
+      ctx.fillStyle = g2;
+      ctx.fillRect(0, 0, cw(), ch());
+
+      time += 0.006;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

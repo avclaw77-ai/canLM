@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canLM — Design Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --border: #e5e5e5;
+      --accent: #0066cc;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 48px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .subtitle { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 12px; }
+    .date { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 40px; }
+    .context { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 40px; }
+    .context h2 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .context p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px; }
+    .context ul { padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; }
+    .context li { margin-bottom: 4px; }
+    .protos { display: flex; flex-direction: column; gap: 16px; }
+    .proto-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .proto-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .proto-preview {
+      border-radius: 8px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      letter-spacing: 0.02em;
+    }
+    .pp-a { background: linear-gradient(135deg, #0c0e1a, #1a1d3a); }
+    .pp-b { background: linear-gradient(135deg, #fef7ef, #fce4e1); color: #c23d2e; }
+    .pp-c { background: linear-gradient(135deg, #0a1628, #1a3040); }
+    .pp-d { background: linear-gradient(135deg, #0d2818, #1a4030); }
+    .pp-e { background: linear-gradient(135deg, #fff5f2, #f0e8ff); color: #e8553a; }
+    .proto-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+    .proto-info .concept { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 10px; line-height: 1.55; }
+    .proto-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proto-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 10px;
+      background: #f0f0f0;
+      color: var(--text-secondary);
+    }
+    .proto-tag-font { background: #e8f4ff; color: #0066cc; }
+    .proto-tag-palette { background: #f0f7ef; color: #2e7d32; }
+    .proto-tag-anim { background: #fef0ea; color: #c23d2e; }
+    .view-btn {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    @media (max-width: 640px) {
+      .proto-card { grid-template-columns: 1fr; }
+      .proto-preview { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>canLM — Design Prototypes</h1>
+    <p class="subtitle">Refined design directions based on board feedback</p>
+    <p class="date">March 29, 2026 — CTO / Design Team</p>
+
+    <div class="context" style="border-color: #2563eb; background: #f8faff;">
+      <h2>Round 2 — Refined Prototypes (F1–F3)</h2>
+      <p>Based on board feedback on the first 5 prototypes:</p>
+      <ul>
+        <li><strong>Aurora</strong>: Rejected — no full black</li>
+        <li><strong>Coral</strong>: Rejected — too SLOP</li>
+        <li><strong>Ocean</strong>: Blue tones liked, but NOT the dark hero</li>
+        <li><strong>Maple</strong>: Animation concept and typography (DM Serif Display) liked — needs refinement</li>
+      </ul>
+      <p><strong>New direction:</strong> Combine Ocean's blue tones (light, no dark hero) with Maple's typography and animation concept. Aim for Anthropic-level sophistication — sleek, simple, lots of breathing room.</p>
+    </div>
+
+    <div class="context">
+      <h2>Original Brief</h2>
+      <p>Make the site more vibrant with better fonts, colour accents, and hero animations that make research fun and approachable.</p>
+    </div>
+
+    <div class="protos">
+
+      <!-- REFINED PROTOTYPES -->
+      <a href="proto-f1-clearwater.html" class="proto-card" style="border-color: #2563eb;">
+        <div class="proto-preview" style="background: linear-gradient(135deg, #f0f5fc, #dbeafe); color: #2563eb;">CLEARWATER</div>
+        <div class="proto-info">
+          <h3>F1 — Clearwater</h3>
+          <p class="concept">Ocean's blue tones + Maple's DM Serif Display. Centered hero like Anthropic with floating blue orbs. Light, airy, sophisticated. Grid-gap focus cards. Editorial research list. Everything breathes.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">DM Serif Display + DM Sans</span>
+            <span class="proto-tag proto-tag-palette">Off-white / Soft blue / Navy text</span>
+            <span class="proto-tag proto-tag-anim">Floating blue orbs</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <a href="proto-f2-nordic.html" class="proto-card" style="border-color: #2563eb;">
+        <div class="proto-preview" style="background: linear-gradient(135deg, #fafbfd, #eff6ff); color: #1e40af;">NORDIC</div>
+        <div class="proto-info">
+          <h3>F2 — Nordic Light</h3>
+          <p class="concept">Maximum restraint, closest to Anthropic. Left-aligned hero with enormous italic serif. Magazine-style two-column layout. Barely-there ambient light animation. The restraint itself communicates intelligence.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">DM Serif Display + DM Sans</span>
+            <span class="proto-tag proto-tag-palette">Near-white / Ice blue / Deep navy</span>
+            <span class="proto-tag proto-tag-anim">Ambient light drift</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <a href="proto-f3-coastal.html" class="proto-card" style="border-color: #2563eb;">
+        <div class="proto-preview" style="background: linear-gradient(135deg, #f7f5f0, #e8f0f8); color: #2c5f8a;">COASTAL</div>
+        <div class="proto-info">
+          <h3>F3 — Coastal</h3>
+          <p class="concept">Warm-cool hybrid — Maple's warmth (cream, gold accents) combined with Ocean's blue. Two-column hero with SVG rings. Gold-line eyebrow detail adds quiet prestige. Research cards with gradient accent strips.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">DM Serif Display + DM Sans</span>
+            <span class="proto-tag proto-tag-palette">Warm cream / Steel blue / Amber gold</span>
+            <span class="proto-tag proto-tag-anim">Pulsing rings + orbital nodes</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <hr style="border: none; border-top: 2px solid var(--border); margin: 24px 0;">
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Original prototypes (Round 1)</p>
+
+      <a href="proto-a-aurora.html" class="proto-card" style="opacity: 0.6;">
+        <div class="proto-preview pp-a">AURORA</div>
+        <div class="proto-info">
+          <h3>A — Aurora Borealis</h3>
+          <p class="concept">Dark atmospheric palette inspired by the Canadian northern sky. Animated aurora curtains flow across the hero. Majestic, contemplative, uniquely Canadian — the aurora instantly says "Canada" without clich&eacute;s.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">Fraunces + Inter</span>
+            <span class="proto-tag proto-tag-palette">Deep navy / Blue / Violet / Mint</span>
+            <span class="proto-tag proto-tag-anim">Animated aurora curtains</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <a href="proto-b-maple.html" class="proto-card" style="opacity: 0.6;">
+        <div class="proto-preview pp-b">MAPLE</div>
+        <div class="proto-info">
+          <h3>B — Maple Warmth</h3>
+          <p class="concept">Light, warm palette inspired by Canadian autumn. Rich reds, amber golds, cream backgrounds. Bold and confident while remaining approachable. The red connects to the Canadian flag without being literal.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">DM Serif Display + DM Sans</span>
+            <span class="proto-tag proto-tag-palette">Cream / Canadian red / Amber / Rust</span>
+            <span class="proto-tag proto-tag-anim">Floating organic shapes</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <a href="proto-c-ocean.html" class="proto-card" style="opacity: 0.6;">
+        <div class="proto-preview pp-c">OCEAN</div>
+        <div class="proto-info">
+          <h3>C — Ocean Current</h3>
+          <p class="concept">Deep-blue-to-light transition. Dark oceanic hero with particle streams and wave forms. Represents data flowing through networks. Page transitions from "the deep" to clarity — a journey metaphor.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">Playfair Display + Outfit</span>
+            <span class="proto-tag proto-tag-palette">Deep navy → Sky blue → White / Teal</span>
+            <span class="proto-tag proto-tag-anim">Particle streams + waves</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <a href="proto-d-forest.html" class="proto-card" style="opacity: 0.6;">
+        <div class="proto-preview pp-d">FOREST</div>
+        <div class="proto-info">
+          <h3>D — Forest & Gold</h3>
+          <p class="concept">Rich forest green with warm gold. Inspired by the Canadian boreal forest. Animated growing tree of knowledge with golden nodes for research areas. Feels institutional (like a university crest) but not stuffy.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">Instrument Serif + General Sans</span>
+            <span class="proto-tag proto-tag-palette">Forest green / Gold / Warm stone / Cream</span>
+            <span class="proto-tag proto-tag-anim">Growing tree + golden fireflies</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+
+      <a href="proto-e-coral.html" class="proto-card" style="opacity: 0.6;">
+        <div class="proto-preview pp-e">CORAL</div>
+        <div class="proto-info">
+          <h3>E — Vibrant Coral</h3>
+          <p class="concept">Warm, energetic coral/teal/purple palette. Center-aligned hero with badge elements. Breathing geometric mesh animation. Most "modern tech startup" direction — innovative and approachable. Bento-grid research layout.</p>
+          <div class="proto-tags">
+            <span class="proto-tag proto-tag-font">Sora + Manrope</span>
+            <span class="proto-tag proto-tag-palette">Coral / Teal / Purple / Warm white</span>
+            <span class="proto-tag proto-tag-anim">Breathing geometric mesh</span>
+          </div>
+          <span class="view-btn">View prototype →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype F1 — Clearwater | canLM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9fbfe;
+      --bg-tint: #f0f5fc;
+      --bg-card: #ffffff;
+      --text: #1a1f36;
+      --text-secondary: #4a5578;
+      --text-muted: #8892b0;
+      --accent: #2563eb;
+      --accent-soft: #3b82f6;
+      --accent-pale: #dbeafe;
+      --accent-deep: #1d4ed8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --max-w: 1080px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+
+    /* RATIONALE */
+    .rationale {
+      background: var(--bg-tint);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .rationale .container { max-width: 780px; }
+    .rationale h2 { font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); margin-bottom: 10px; }
+    .rationale p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 8px; }
+    .rationale strong { color: var(--text); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 500; margin-right: 6px; }
+    .tag-font { background: var(--accent-pale); color: var(--accent); }
+    .tag-color { background: #e0f2fe; color: #0369a1; }
+    .tag-anim { background: #f0fdf4; color: #166534; }
+
+    /* NAV */
+    nav {
+      padding: 20px 0;
+      background: rgba(249, 251, 254, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--text); letter-spacing: -0.01em; }
+    .logo span { color: var(--accent-soft); font-weight: 400; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-tint) 100%);
+    }
+    .hero-canvas-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.7;
+    }
+    .hero-canvas-wrap canvas { width: 100%; height: 100%; }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-soft);
+    }
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .btn-primary {
+      background: var(--text);
+      color: white;
+    }
+    .btn-primary:hover { background: #2d3354; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26, 31, 54, 0.15); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* SECTIONS */
+    .section { padding: 100px 0; }
+    .section-tint { background: var(--bg-tint); }
+    .section-header {
+      margin-bottom: 56px;
+    }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* FOCUS CARDS */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .focus-card {
+      background: var(--bg-card);
+      padding: 36px 28px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    .focus-card:hover { background: var(--bg-tint); }
+    .focus-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--accent);
+      opacity: 0.25;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .focus-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .focus-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
+
+    /* RESEARCH */
+    .research-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .research-item {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .research-item:first-child { border-top: 1px solid var(--border); }
+    .research-item:hover { padding-left: 12px; }
+    .research-date { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+    .research-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; line-height: 1.4; }
+    .research-item p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
+    .research-arrow { color: var(--text-muted); font-size: 1.1rem; transition: all 0.2s; }
+    .research-item:hover .research-arrow { transform: translateX(4px); color: var(--accent); }
+
+    /* NEWSLETTER */
+    .newsletter {
+      padding: 80px 0;
+      background: var(--bg-tint);
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .newsletter p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 28px; }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      background: white;
+      color: var(--text);
+    }
+    .newsletter-form input:focus { outline: none; border-color: var(--accent); }
+    .newsletter-form button {
+      padding: 12px 24px;
+      background: var(--text);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: var(--accent-deep); }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    footer .container { display: flex; justify-content: space-between; align-items: center; }
+    footer p { color: var(--text-muted); font-size: 0.82rem; }
+    footer .logo { font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 80px 0 60px; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .research-item { grid-template-columns: 1fr; gap: 8px; }
+      .research-date { display: none; }
+      .research-arrow { display: none; }
+      .newsletter-form { flex-direction: column; }
+      footer .container { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DESIGN RATIONALE -->
+  <section class="rationale">
+    <div class="container">
+      <h2>Prototype F1 — Clearwater</h2>
+      <p><strong>Concept:</strong> Takes the <strong>blue tones from Ocean</strong> (without the dark hero) and the <strong>DM Serif Display typography from Maple</strong>. Everything is light, airy, and sophisticated. The hero features a refined floating-orb animation in soft blues — subtle, mesmerizing, never distracting. Inspired by Anthropic's restraint: lots of white space, centered hero, editorial typography.</p>
+      <p><strong>Mood:</strong> Clear, trustworthy, intelligent. Like looking through still water. The blue palette feels institutional yet warm. DM Serif Display headings give editorial authority while DM Sans body text stays modern and approachable.</p>
+      <p>
+        <span class="tag tag-font">DM Serif Display + DM Sans (from Maple)</span>
+        <span class="tag tag-color">Off-white / Soft blue / Navy text / Blue accents</span>
+        <span class="tag tag-anim">Floating blue orbs — refined organic shapes</span>
+      </p>
+      <p><strong>Why this works:</strong> Centered hero with large serif type feels like an established institution, not a startup. The floating animation adds life without competing for attention. Blue is universally trusted. The grid-gap focus cards (no borders, just white cells separated by hairlines) feel clean and architectural.</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">can<span>LM</span></a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Focus Areas</a>
+        <a href="#">Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
+    <div class="container">
+      <div class="hero-inner">
+        <span class="hero-eyebrow">Applied AI Research · Canada</span>
+        <h1>Making AI work <em>for</em> Canadians</h1>
+        <p>We produce research, models, and content rooted in Canadian cultures, languages, and communities — making AI approachable for everyone.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">Read our research →</a>
+          <a href="#" class="btn btn-outline">Our mission</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS AREAS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Focus Areas</span>
+        <h2>Where Canadian AI needs us most</h2>
+        <p class="section-desc">Six pillars of research, each led by a dedicated chair working with Canada's ecosystem.</p>
+      </div>
+      <div class="focus-grid">
+        <a href="#" class="focus-card"><span class="focus-num">01</span><h3>Sovereign AI</h3><p>Ensuring Canada controls its AI destiny — data independence and compute strategy.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">02</span><h3>Linguistic Tuning</h3><p>Optimizing models for Québécois French, Canadian English, and Indigenous languages.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">03</span><h3>Accessibility</h3><p>Making AI work for every Canadian, from first-time users to seniors.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">04</span><h3>Indigenous Communities</h3><p>Supporting language preservation and knowledge systems with respectful AI tools.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">05</span><h3>Society & Culture</h3><p>Understanding AI's impact on Canadian democracy, media, and institutions.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">06</span><h3>Applied Research</h3><p>Turning findings into real products, policy, and community resources.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Research</span>
+        <h2>Latest from our team</h2>
+        <p class="section-desc">Investigations where AI and LLMs intersect with Canadian priorities.</p>
+      </div>
+      <div class="research-list">
+        <a href="#" class="research-item">
+          <span class="research-date">Mar 2026</span>
+          <div>
+            <h3>The AI Landscape in 2026: What Canadians Need to Know</h3>
+            <p>Four AI giants, the open-source revolution, and what it means for Canada.</p>
+          </div>
+          <span class="research-arrow">→</span>
+        </a>
+        <a href="#" class="research-item">
+          <span class="research-date">Mar 2026</span>
+          <div>
+            <h3>AI and Canada's Seniors: Building Technology That Includes Everyone</h3>
+            <p>Nearly one in five Canadians is over 65. AI can help — if we design it inclusively.</p>
+          </div>
+          <span class="research-arrow">→</span>
+        </a>
+        <a href="#" class="research-item">
+          <span class="research-date">Mar 2026</span>
+          <div>
+            <h3>Why Canada Needs Its Own AI Strategy — And Why Now</h3>
+            <p>Canada has the talent, the values, and the affordable technology to compete.</p>
+          </div>
+          <span class="research-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay informed</h2>
+      <p>Get our latest research and insights delivered to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com">
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="#" class="logo">can<span>LM</span></a>
+      <p>© <script>document.write(new Date().getFullYear())</script> canLM — Canadian AI Networks</p>
+    </div>
+  </footer>
+
+  <script>
+    // Refined floating orbs — soft blue, gentle motion
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, time = 0;
+
+    function resize() {
+      w = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      h = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    resize();
+    window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+    const cw = () => canvas.offsetWidth;
+    const ch = () => canvas.offsetHeight;
+
+    const orbs = [];
+    for (let i = 0; i < 8; i++) {
+      orbs.push({
+        x: 0.2 + Math.random() * 0.6,
+        y: 0.15 + Math.random() * 0.7,
+        r: 40 + Math.random() * 100,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.15 + Math.random() * 0.2,
+        alpha: 0.02 + Math.random() * 0.03
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, cw(), ch());
+
+      orbs.forEach(o => {
+        const x = o.x * cw() + Math.sin(time * o.speed + o.phase) * 40;
+        const y = o.y * ch() + Math.cos(time * o.speed * 0.8 + o.phase) * 25;
+        const r = o.r + Math.sin(time * 0.5 + o.phase) * 10;
+
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+        grad.addColorStop(0, `rgba(37, 99, 235, ${o.alpha * 1.5})`);
+        grad.addColorStop(0.5, `rgba(59, 130, 246, ${o.alpha})`);
+        grad.addColorStop(1, `rgba(59, 130, 246, 0)`);
+
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      });
+
+      time += 0.008;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype E — Vibrant Coral | canLM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffbf9;
+      --bg-coral: #fff5f2;
+      --bg-card: #ffffff;
+      --text: #1a1025;
+      --text-secondary: #4d4259;
+      --text-muted: #8a809a;
+      --accent: #e8553a;
+      --accent-coral: #ff6b52;
+      --accent-teal: #1a9e8f;
+      --accent-purple: #7c4dff;
+      --accent-light: #fff0ec;
+      --accent-teal-light: #e0f5f2;
+      --border: #ede4e0;
+      --font-body: 'Manrope', -apple-system, sans-serif;
+      --font-display: 'Sora', -apple-system, sans-serif;
+      --max-w: 1100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+
+    /* RATIONALE */
+    .rationale {
+      background: var(--bg-coral);
+      border-bottom: 2px solid var(--border);
+      padding: 32px 0;
+    }
+    .rationale .container { max-width: 800px; }
+    .rationale h2 { font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); margin-bottom: 12px; font-weight: 700; }
+    .rationale p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px; }
+    .rationale strong { color: var(--text); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 6px; }
+    .tag-font { background: var(--accent-light); color: var(--accent); }
+    .tag-color { background: var(--accent-teal-light); color: var(--accent-teal); }
+    .tag-anim { background: #f0e8ff; color: var(--accent-purple); }
+
+    /* NAV */
+    nav { padding: 20px 0; }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; }
+    .logo span { color: var(--accent-coral); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg canvas { width: 100%; height: 100%; }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-center {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 8px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent-coral), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: var(--font-body);
+    }
+    .btn-coral {
+      background: linear-gradient(135deg, var(--accent-coral), var(--accent));
+      color: white;
+      box-shadow: 0 4px 14px rgba(232, 85, 58, 0.2);
+    }
+    .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232, 85, 58, 0.3); }
+    .btn-soft {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-soft:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ANIMATED FEATURE STRIP */
+    .feature-strip {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-pill {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .feature-pill:hover { border-color: var(--accent-coral); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(232, 85, 58, 0.08); }
+    .feature-pill-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .fpi-1 { background: var(--accent-light); }
+    .fpi-2 { background: var(--accent-teal-light); }
+    .fpi-3 { background: #f0e8ff; }
+    .feature-pill h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .feature-pill p { color: var(--text-secondary); font-size: 0.82rem; }
+
+    /* SECTIONS */
+    .section { padding: 100px 0; }
+    .section-coral { background: var(--bg-coral); }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* FOCUS CAROUSEL-STYLE */
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .focus-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
+      position: relative;
+    }
+    .focus-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 4px;
+      border-radius: 0 0 4px 4px;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+    .focus-card:nth-child(1)::before { background: var(--accent-coral); }
+    .focus-card:nth-child(2)::before { background: var(--accent-teal); }
+    .focus-card:nth-child(3)::before { background: var(--accent-purple); }
+    .focus-card:nth-child(4)::before { background: var(--accent-coral); }
+    .focus-card:nth-child(5)::before { background: var(--accent-teal); }
+    .focus-card:nth-child(6)::before { background: var(--accent-purple); }
+    .focus-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .focus-card:hover::before { opacity: 1; }
+    .focus-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .focus-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.55; }
+    .focus-card .arrow { display: block; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--accent-coral); }
+
+    /* RESEARCH BENTO */
+    .research-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .research-bento-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .research-bento-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .research-bento-card:first-child {
+      grid-row: 1 / 3;
+    }
+    .rbc-visual {
+      height: 200px;
+      position: relative;
+    }
+    .rbc-visual-sm { height: 120px; }
+    .rbcv-1 { background: linear-gradient(135deg, #fff0ec, #f0e8ff); }
+    .rbcv-2 { background: linear-gradient(135deg, #e0f5f2, #fff0ec); }
+    .rbcv-3 { background: linear-gradient(135deg, #f0e8ff, #e0f5f2); }
+    .rbc-visual svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .research-bento-body { padding: 24px; }
+    .rb-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 6px; margin-right: 4px; margin-bottom: 8px; }
+    .rb-tag-coral { background: var(--accent-light); color: var(--accent); }
+    .rb-tag-teal { background: var(--accent-teal-light); color: var(--accent-teal); }
+    .rb-tag-purple { background: #f0e8ff; color: var(--accent-purple); }
+    .research-bento-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+    .research-bento-card p { color: var(--text-secondary); font-size: 0.85rem; }
+    .rbc-meta { display: block; margin-top: 12px; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
+
+    /* FOOTER */
+    footer { padding: 48px 0; border-top: 1px solid var(--border); }
+    footer .container { display: flex; justify-content: space-between; align-items: center; }
+    footer p { color: var(--text-muted); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .feature-strip { grid-template-columns: 1fr; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .research-bento { grid-template-columns: 1fr; }
+      .research-bento-card:first-child { grid-row: auto; }
+      footer .container { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- RATIONALE -->
+  <section class="rationale">
+    <div class="container">
+      <h2>Prototype E — Vibrant Coral</h2>
+      <p><strong>Concept:</strong> A warm, energetic palette centred on coral, teal, and purple — three colours that create visual excitement without clashing. The hero features an animated <strong>geometric mesh</strong> that morphs and breathes, with colorful nodes connecting. This is the most <strong>"modern tech startup"</strong> direction — it says "we're innovative and approachable."</p>
+      <p><strong>Mood:</strong> Energetic, modern, inviting. This is the opposite of dry academic. The center-aligned hero with badge/pill elements borrows from the best SaaS landing pages. The bento-grid research layout makes articles feel like something you'd want to click, not homework.</p>
+      <p>
+        <span class="tag tag-font">Sora (geometric display) + Manrope (friendly body)</span>
+        <span class="tag tag-color">Coral / Teal / Purple / Warm white</span>
+        <span class="tag tag-anim">Breathing geometric mesh with colored nodes</span>
+      </p>
+      <p><strong>Why this works for non-academics:</strong> This is the friendliest option. Coral is warm and inviting. Teal adds trust. The center-aligned hero feels like a welcome mat, not a wall of text. The bento research layout makes each article a visual story. "Shy or scared about AI" visitors will feel this is for them.</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">can<span>LM</span></a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Focus Areas</a>
+        <a href="#">Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><canvas id="mesh-canvas"></canvas></div>
+    <div class="container">
+      <div class="hero-center">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Applied AI Research — Canada
+        </div>
+        <h1>Building AI that <span class="highlight">understands</span> Canada</h1>
+        <p class="hero-sub">We produce research, models, and content rooted in Canadian cultures, languages, and communities — making AI approachable for every Canadian.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-coral">Read our research →</a>
+          <a href="#" class="btn btn-soft">Our mission</a>
+        </div>
+      </div>
+      <div class="feature-strip">
+        <div class="feature-pill">
+          <div class="feature-pill-icon fpi-1">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8553a" stroke-width="2"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7L12 2z"/></svg>
+          </div>
+          <h3>Sovereign AI</h3>
+          <p>Canadian-controlled models and data infrastructure</p>
+        </div>
+        <div class="feature-pill">
+          <div class="feature-pill-icon fpi-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a9e8f" stroke-width="2"><rect x="2" y="4" width="10" height="8" rx="1"/><rect x="12" y="12" width="10" height="8" rx="1"/><path d="M6 9h4M16 17h4"/></svg>
+          </div>
+          <h3>Bilingual by Design</h3>
+          <p>Québécois French and Canadian English, natively</p>
+        </div>
+        <div class="feature-pill">
+          <div class="feature-pill-icon fpi-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c4dff" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="9" r="3"/><path d="M7 20c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>
+          </div>
+          <h3>For Everyone</h3>
+          <p>Accessible AI for all Canadians, no expertise needed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section class="section section-coral">
+    <div class="container">
+      <span class="section-eyebrow">Focus Areas</span>
+      <h2>Where Canadian AI needs us most</h2>
+      <p class="section-desc">Six pillars of research, each led by a dedicated chair.</p>
+      <div class="focus-grid">
+        <a href="#" class="focus-card"><h3>Sovereign AI</h3><p>Ensuring Canada controls its AI destiny — data independence and compute strategy.</p><span class="arrow">Learn more →</span></a>
+        <a href="#" class="focus-card"><h3>Linguistic Tuning</h3><p>Optimizing models for Québécois French and Canadian English.</p><span class="arrow">Learn more →</span></a>
+        <a href="#" class="focus-card"><h3>Accessibility</h3><p>Making AI work for every Canadian, from first-time users to seniors.</p><span class="arrow">Learn more →</span></a>
+        <a href="#" class="focus-card"><h3>Indigenous Communities</h3><p>Supporting language preservation and knowledge systems.</p><span class="arrow">Learn more →</span></a>
+        <a href="#" class="focus-card"><h3>Society & Culture</h3><p>Understanding AI's impact on Canadian democracy and institutions.</p><span class="arrow">Learn more →</span></a>
+        <a href="#" class="focus-card"><h3>Applied Research</h3><p>Turning findings into real products and policy decisions.</p><span class="arrow">Learn more →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section">
+    <div class="container">
+      <span class="section-eyebrow">Research</span>
+      <h2>Latest research</h2>
+      <p class="section-desc">Our team investigates where AI and LLMs intersect with Canadian priorities.</p>
+      <div class="research-bento">
+        <a href="#" class="research-bento-card">
+          <div class="rbc-visual rbcv-1">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <circle cx="100" cy="80" r="40" fill="#e8553a" fill-opacity="0.08"/>
+              <circle cx="280" cy="120" r="60" fill="#7c4dff" fill-opacity="0.06"/>
+              <circle cx="200" cy="50" r="30" fill="#1a9e8f" fill-opacity="0.07"/>
+            </svg>
+          </div>
+          <div class="research-bento-body">
+            <span class="rb-tag rb-tag-coral">Sovereignty</span><span class="rb-tag rb-tag-purple">Policy</span>
+            <h3>The AI Landscape in 2026: What Canadians Need to Know</h3>
+            <p>Four AI giants, the open-source revolution, and what it means for Canada.</p>
+            <span class="rbc-meta">March 2026 →</span>
+          </div>
+        </a>
+        <a href="#" class="research-bento-card">
+          <div class="rbc-visual rbc-visual-sm rbcv-2">
+            <svg viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice">
+              <circle cx="320" cy="60" r="50" fill="#1a9e8f" fill-opacity="0.08"/>
+              <circle cx="120" cy="40" r="30" fill="#e8553a" fill-opacity="0.06"/>
+            </svg>
+          </div>
+          <div class="research-bento-body">
+            <span class="rb-tag rb-tag-teal">Accessibility</span>
+            <h3>AI and Canada's Seniors</h3>
+            <p>Building technology that includes everyone.</p>
+            <span class="rbc-meta">March 2026 →</span>
+          </div>
+        </a>
+        <a href="#" class="research-bento-card">
+          <div class="rbc-visual rbc-visual-sm rbcv-3">
+            <svg viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice">
+              <circle cx="200" cy="60" r="50" fill="#7c4dff" fill-opacity="0.07"/>
+              <circle cx="80" cy="80" r="25" fill="#e8553a" fill-opacity="0.05"/>
+            </svg>
+          </div>
+          <div class="research-bento-body">
+            <span class="rb-tag rb-tag-coral">Strategy</span>
+            <h3>Why Canada Needs Its Own AI Strategy</h3>
+            <p>The talent, values, and technology to compete.</p>
+            <span class="rbc-meta">March 2026 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="#" class="logo">can<span>LM</span></a>
+      <p>© <script>document.write(new Date().getFullYear())</script> canLM — Canada's Applied AI Research</p>
+    </div>
+  </footer>
+
+  <script>
+    // Geometric mesh animation
+    const canvas = document.getElementById('mesh-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, time = 0;
+    function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const nodes = [];
+    for (let i = 0; i < 40; i++) {
+      nodes.push({
+        x: Math.random(),
+        y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.0004,
+        vy: (Math.random() - 0.5) * 0.0004,
+        r: 2 + Math.random() * 3,
+        color: ['rgba(232,85,58,', 'rgba(26,158,143,', 'rgba(124,77,255,'][Math.floor(Math.random() * 3)]
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+
+      // Move nodes
+      nodes.forEach(n => {
+        n.x += n.vx + Math.sin(time + n.y * 5) * 0.00008;
+        n.y += n.vy + Math.cos(time + n.x * 5) * 0.00008;
+        if (n.x < 0 || n.x > 1) n.vx *= -1;
+        if (n.y < 0 || n.y > 1) n.vy *= -1;
+        n.x = Math.max(0, Math.min(1, n.x));
+        n.y = Math.max(0, Math.min(1, n.y));
+      });
+
+      // Draw connections
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = (nodes[i].x - nodes[j].x) * w;
+          const dy = (nodes[i].y - nodes[j].y) * h;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x * w, nodes[i].y * h);
+            ctx.lineTo(nodes[j].x * w, nodes[j].y * h);
+            const alpha = 0.06 * (1 - dist / 120);
+            ctx.strokeStyle = `rgba(200, 100, 80, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      nodes.forEach(n => {
+        const breathe = 1 + 0.2 * Math.sin(time * 2 + n.x * 10);
+        ctx.beginPath();
+        ctx.arc(n.x * w, n.y * h, n.r * breathe, 0, Math.PI * 2);
+        ctx.fillStyle = n.color + '0.15)';
+        ctx.fill();
+        // Glow
+        ctx.beginPath();
+        ctx.arc(n.x * w, n.y * h, n.r * breathe * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = n.color + '0.03)';
+        ctx.fill();
+      });
+
+      time += 0.012;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

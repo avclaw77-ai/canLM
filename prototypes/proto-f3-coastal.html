@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype F3 — Coastal | canLM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --bg-warm: #f7f5f0;
+      --bg-blue: #f4f7fc;
+      --bg-card: #ffffff;
+      --text: #1c1c28;
+      --text-secondary: #4a4a5e;
+      --text-muted: #8e8ea0;
+      --accent: #2c5f8a;
+      --accent-warm: #3a7cb8;
+      --accent-pale: #e8f0f8;
+      --accent-gold: #c89b3c;
+      --border: #e6e4df;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --max-w: 1080px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+
+    /* RATIONALE */
+    .rationale {
+      background: var(--bg-warm);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .rationale .container { max-width: 780px; }
+    .rationale h2 { font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); margin-bottom: 10px; }
+    .rationale p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 8px; }
+    .rationale strong { color: var(--text); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 500; margin-right: 6px; }
+    .tag-font { background: var(--accent-pale); color: var(--accent); }
+    .tag-color { background: #fef7ed; color: #92700c; }
+    .tag-anim { background: #f0f7fc; color: var(--accent); }
+
+    /* NAV */
+    nav {
+      padding: 22px 0;
+      background: rgba(253, 252, 250, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-anim {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-anim canvas { width: 100%; height: 100%; }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-content {}
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1.5px;
+      background: var(--accent-gold);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+      line-height: 1.12;
+      margin-bottom: 20px;
+      color: var(--text);
+      letter-spacing: -0.015em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover { background: #1f4a6e; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(44, 95, 138, 0.2); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* HERO VISUAL — SVG composition */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual svg { width: 100%; max-width: 380px; }
+
+    /* SECTIONS */
+    .section { padding: 100px 0; }
+    .section-warm { background: var(--bg-warm); }
+    .section-blue { background: var(--bg-blue); }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 16px;
+      height: 1.5px;
+      background: var(--accent-gold);
+    }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 480px;
+      margin-bottom: 48px;
+    }
+
+    /* FOCUS CARDS — warm + blue accents */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .focus-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.25s;
+      position: relative;
+    }
+    .focus-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-gold));
+      opacity: 0;
+      transition: opacity 0.25s;
+      border-radius: 0 0 2px 2px;
+    }
+    .focus-card:hover { box-shadow: 0 4px 20px rgba(44, 95, 138, 0.06); transform: translateY(-2px); }
+    .focus-card:hover::before { opacity: 1; }
+    .focus-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--accent-gold);
+      opacity: 0.4;
+      margin-bottom: 14px;
+      display: block;
+      line-height: 1;
+    }
+    .focus-card h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 6px; }
+    .focus-card p { color: var(--text-secondary); font-size: 0.84rem; line-height: 1.6; }
+
+    /* RESEARCH — card style with subtle accent strip */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.25s;
+    }
+    .research-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .research-card-accent {
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+    }
+    .rc-a2 { background: linear-gradient(90deg, var(--accent-warm), var(--accent-gold)); }
+    .rc-a3 { background: linear-gradient(90deg, var(--accent-gold), var(--accent)); }
+    .research-card-body { padding: 28px 24px; }
+    .research-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-right: 12px;
+      margin-bottom: 12px;
+    }
+    .research-card h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .research-card p { color: var(--text-secondary); font-size: 0.84rem; line-height: 1.55; }
+    .research-card-meta { display: block; margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
+
+    /* NEWSLETTER */
+    .newsletter {
+      padding: 72px 0;
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .newsletter p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 24px; }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-family: var(--font-body);
+      background: white;
+      color: var(--text);
+    }
+    .newsletter-form input:focus { outline: none; border-color: var(--accent); }
+    .newsletter-form button {
+      padding: 12px 22px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: #1f4a6e; }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    footer .container { display: flex; justify-content: space-between; align-items: center; }
+    footer p { color: var(--text-muted); font-size: 0.82rem; }
+    footer .logo { font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 72px 0 56px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-visual { display: none; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+      footer .container { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DESIGN RATIONALE -->
+  <section class="rationale">
+    <div class="container">
+      <h2>Prototype F3 — Coastal</h2>
+      <p><strong>Concept:</strong> A <strong>warm-cool hybrid</strong> — the warmth and approachability of Maple (cream backgrounds, gold accents) combined with Ocean's sophisticated blue palette. Two-column hero with an animated SVG composition. This direction says "established institution" through warm tones while staying modern with steel-blue accents. The gold-line eyebrow detail adds quiet prestige.</p>
+      <p><strong>Mood:</strong> Warm, trustworthy, quietly prestigious. Like a well-designed university or cultural institution site. The blue-gold combination evokes wisdom without stuffiness. Cream backgrounds feel inviting, not clinical.</p>
+      <p>
+        <span class="tag tag-font">DM Serif Display + DM Sans (from Maple)</span>
+        <span class="tag tag-color">Warm cream / Steel blue / Amber gold accents</span>
+        <span class="tag tag-anim">Pulsing concentric rings + orbital nodes</span>
+      </p>
+      <p><strong>Why this works:</strong> The warm-cool split mirrors canLM's dual nature — warm and human-centered, but intellectually rigorous. Gold accents on numbered items and eyebrows create a visual thread throughout the page. Cards have a subtle top-gradient reveal on hover. The two-column hero gives room for both messaging and a visual element.</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">can<span>LM</span></a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Focus Areas</a>
+        <a href="#">Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-anim"><canvas id="hero-canvas"></canvas></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-eyebrow">Applied AI Research</span>
+          <h1>Building AI that <em>understands</em> Canada</h1>
+          <p>We produce research, models, and content rooted in Canadian cultures, languages, and communities — making AI approachable for every Canadian.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Read our research →</a>
+            <a href="#" class="btn btn-outline">Our mission</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+            <!-- Concentric rings -->
+            <circle cx="190" cy="190" r="160" fill="none" stroke="#2c5f8a" stroke-opacity="0.06" stroke-width="1">
+              <animate attributeName="r" values="160;165;160" dur="5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="190" cy="190" r="120" fill="none" stroke="#2c5f8a" stroke-opacity="0.08" stroke-width="1">
+              <animate attributeName="r" values="120;124;120" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="190" cy="190" r="80" fill="none" stroke="#c89b3c" stroke-opacity="0.1" stroke-width="1">
+              <animate attributeName="r" values="80;83;80" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="190" cy="190" r="40" fill="none" stroke="#2c5f8a" stroke-opacity="0.12" stroke-width="1">
+              <animate attributeName="r" values="40;42;40" dur="3s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Gradient fill - very subtle -->
+            <defs>
+              <radialGradient id="cg1" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#2c5f8a" stop-opacity="0.04"/>
+                <stop offset="100%" stop-color="#2c5f8a" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="190" cy="190" r="140" fill="url(#cg1)"/>
+
+            <!-- Orbital nodes -->
+            <circle cx="190" cy="30" r="5" fill="#2c5f8a" opacity="0.15">
+              <animateTransform attributeName="transform" type="rotate" from="0 190 190" to="360 190 190" dur="24s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="350" cy="190" r="4" fill="#c89b3c" opacity="0.2">
+              <animateTransform attributeName="transform" type="rotate" from="0 190 190" to="-360 190 190" dur="18s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="100" cy="320" r="3.5" fill="#2c5f8a" opacity="0.12">
+              <animateTransform attributeName="transform" type="rotate" from="0 190 190" to="360 190 190" dur="30s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="280" cy="60" r="3" fill="#c89b3c" opacity="0.15">
+              <animateTransform attributeName="transform" type="rotate" from="0 190 190" to="-360 190 190" dur="22s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Center pulse -->
+            <circle cx="190" cy="190" r="6" fill="#2c5f8a" opacity="0.2">
+              <animate attributeName="opacity" values="0.2;0.35;0.2" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS AREAS -->
+  <section class="section section-warm">
+    <div class="container">
+      <span class="section-eyebrow">Focus Areas</span>
+      <h2>Where Canadian AI needs us most</h2>
+      <p class="section-desc">Six pillars of research, each led by a dedicated chair working with Canada's ecosystem.</p>
+      <div class="focus-grid">
+        <a href="#" class="focus-card"><span class="focus-num">01</span><h3>Sovereign AI</h3><p>Ensuring Canada controls its AI destiny — data independence and compute strategy.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">02</span><h3>Linguistic Tuning</h3><p>Optimizing models for Québécois French, Canadian English, and Indigenous languages.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">03</span><h3>Accessibility</h3><p>Making AI work for every Canadian, from first-time users to seniors.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">04</span><h3>Indigenous Communities</h3><p>Supporting language preservation and knowledge systems with respectful AI tools.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">05</span><h3>Society & Culture</h3><p>Understanding AI's impact on Canadian democracy, media, and institutions.</p></a>
+        <a href="#" class="focus-card"><span class="focus-num">06</span><h3>Applied Research</h3><p>Turning findings into real products, policy, and community resources.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section section-blue">
+    <div class="container">
+      <span class="section-eyebrow">Research</span>
+      <h2>Latest from our team</h2>
+      <p class="section-desc">Investigations where AI and LLMs intersect with Canadian priorities.</p>
+      <div class="research-grid">
+        <a href="#" class="research-card">
+          <div class="research-card-accent"></div>
+          <div class="research-card-body">
+            <span class="research-tag">Sovereignty</span><span class="research-tag">Policy</span>
+            <h3>The AI Landscape in 2026: What Canadians Need to Know</h3>
+            <p>Four AI giants, the open-source revolution, and what it means for Canada.</p>
+            <span class="research-card-meta">March 2026 →</span>
+          </div>
+        </a>
+        <a href="#" class="research-card">
+          <div class="research-card-accent rc-a2"></div>
+          <div class="research-card-body">
+            <span class="research-tag">Accessibility</span><span class="research-tag">Healthcare</span>
+            <h3>AI and Canada's Seniors: Building Technology That Includes Everyone</h3>
+            <p>Nearly one in five Canadians is over 65. AI can help — if we design it inclusively.</p>
+            <span class="research-card-meta">March 2026 →</span>
+          </div>
+        </a>
+        <a href="#" class="research-card">
+          <div class="research-card-accent rc-a3"></div>
+          <div class="research-card-body">
+            <span class="research-tag">Sovereignty</span><span class="research-tag">Strategy</span>
+            <h3>Why Canada Needs Its Own AI Strategy — And Why Now</h3>
+            <p>Canada has the talent, the values, and the affordable technology to compete.</p>
+            <span class="research-card-meta">March 2026 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay informed</h2>
+      <p>Get our latest research and insights delivered to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com">
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="#" class="logo">can<span>LM</span></a>
+      <p>© <script>document.write(new Date().getFullYear())</script> canLM — Canadian AI Networks</p>
+    </div>
+  </footer>
+
+  <script>
+    // Soft ambient wash — warm + cool blend
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, time = 0;
+
+    function resize() {
+      w = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      h = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    resize();
+    window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+    const cw = () => canvas.offsetWidth;
+    const ch = () => canvas.offsetHeight;
+
+    const blobs = [];
+    for (let i = 0; i < 5; i++) {
+      blobs.push({
+        x: 0.3 + Math.random() * 0.5,
+        y: 0.2 + Math.random() * 0.6,
+        r: 60 + Math.random() * 80,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.12 + Math.random() * 0.15,
+        isWarm: i < 2
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, cw(), ch());
+
+      blobs.forEach(b => {
+        const x = b.x * cw() + Math.sin(time * b.speed + b.phase) * 30;
+        const y = b.y * ch() + Math.cos(time * b.speed * 0.7 + b.phase) * 20;
+        const r = b.r + Math.sin(time * 0.4 + b.phase) * 8;
+
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+        if (b.isWarm) {
+          grad.addColorStop(0, 'rgba(200, 155, 60, 0.025)');
+          grad.addColorStop(1, 'rgba(200, 155, 60, 0)');
+        } else {
+          grad.addColorStop(0, 'rgba(44, 95, 138, 0.03)');
+          grad.addColorStop(1, 'rgba(44, 95, 138, 0)');
+        }
+
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      });
+
+      time += 0.007;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
