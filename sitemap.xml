@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://canlm.ca/website/</loc>
+    <loc>https://canlm.ca/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/research/</loc>
+    <loc>https://canlm.ca/research/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/</loc>
+    <loc>https://canlm.ca/focus/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/research/ai-landscape-2026.html</loc>
+    <loc>https://canlm.ca/research/ai-landscape-2026.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/research/seniors-ai.html</loc>
+    <loc>https://canlm.ca/research/seniors-ai.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/research/sovereign-ai.html</loc>
+    <loc>https://canlm.ca/research/sovereign-ai.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/sovereign-ai.html</loc>
+    <loc>https://canlm.ca/focus/sovereign-ai.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/linguistic-tuning.html</loc>
+    <loc>https://canlm.ca/focus/linguistic-tuning.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/accessibility.html</loc>
+    <loc>https://canlm.ca/focus/accessibility.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/indigenous-communities.html</loc>
+    <loc>https://canlm.ca/focus/indigenous-communities.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/society-culture.html</loc>
+    <loc>https://canlm.ca/focus/society-culture.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://canlm.ca/website/focus/applied-research.html</loc>
+    <loc>https://canlm.ca/focus/applied-research.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
