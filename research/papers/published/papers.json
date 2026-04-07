@@ -47,6 +47,24 @@
       "tags": ["Indigenous", "Youth", "Knowledge"],
       "date": "March 2026",
       "pdf": "./en/research-indigenous-ai-youth-knowledge-transmission.pdf"
+    },
+    {
+      "title": "Competitive Landscape Update: Ottavo vs. GPT-4o, Gemini, and Claude in the Canadian Market",
+      "tags": ["Ottavo", "Competitive Analysis", "Canadian Market"],
+      "date": "April 2026",
+      "pdf": "./en/research-paper-competitive-landscape-ottavo-en.pdf"
+    },
+    {
+      "title": "Canadian Bilingual Fine-Tuning Technical Brief: FR-CA & EN-CA Best Practices",
+      "tags": ["Bilingual", "Fine-Tuning", "Technical Brief"],
+      "date": "April 2026",
+      "pdf": "./en/technical-brief-bilingual-finetuning-fr-ca-en-ca.pdf"
+    },
+    {
+      "title": "Canadian Consumer AI Adoption Patterns — Spring 2026",
+      "tags": ["Consumer", "AI Adoption", "Canada"],
+      "date": "April 2026",
+      "pdf": "./en/research-paper-canadian-consumer-ai-adoption-spring-2026.pdf"
     }
   ],
   "fr": [
@@ -97,6 +115,18 @@
       "tags": ["Autochtones", "Jeunesse", "Savoirs"],
       "date": "Mars 2026",
       "pdf": "./fr/recherche-transmission-savoirs-autochtones-ia-jeunesse-fr.pdf"
+    },
+    {
+      "title": "Analyse concurrentielle : Ottavo face à GPT-4o, Gemini et Claude sur le marché canadien",
+      "tags": ["Ottavo", "Analyse concurrentielle", "Marché canadien"],
+      "date": "Avril 2026",
+      "pdf": "./fr/research-paper-competitive-landscape-ottavo-fr.pdf"
+    },
+    {
+      "title": "Note technique sur l'ajustement bilingue : meilleures pratiques FR-CA et EN-CA",
+      "tags": ["Bilingue", "Ajustement", "Note technique"],
+      "date": "Avril 2026",
+      "pdf": "./fr/technical-brief-bilingual-finetuning-fr-ca-en-ca-fr.pdf"
     }
   ]
 }

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <title>Ottavo — A Canadian AI Assistant | canLM</title>
+  <meta name="description" content="Ottavo is a Canadian AI assistant — built in Canada, for Canadians. Data sovereignty, bilingual by design, and tuned for Canadian life.">
+  <link rel="canonical" href="https://canlm.ca/ottavo/">
+  <meta property="og:title" content="Ottavo — A Canadian AI Assistant">
+  <meta property="og:description" content="Ottavo is a Canadian AI assistant — built in Canada, for Canadians. Data sovereignty, bilingual by design, and tuned for Canadian life.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://canlm.ca/ottavo/">
+  <meta property="og:image" content="https://canlm.ca/images/canLM-social.svg">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ottavo — A Canadian AI Assistant">
+  <meta name="twitter:description" content="Ottavo is a Canadian AI assistant — built in Canada, for Canadians. Data sovereignty, bilingual by design, and tuned for Canadian life.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="../js/tailwind-config.js"></script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .glass-nav { background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .ghost-border { border: 1px solid rgba(211,195,193,0.15); }
+    .ambient-shadow { box-shadow: 0 20px 50px rgba(28,28,24,0.06); }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; padding: 0.5rem 1rem; background: #705654; color: #fff; font-family: 'Manrope', sans-serif; }
+    .skip-link:focus { left: 0; }
+    html { scroll-behavior: smooth; }
+    .lang-btn { opacity: 0.5; transition: opacity 0.2s; }
+    .lang-btn.active { opacity: 1; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    *:focus-visible { outline: 2px solid #705654; outline-offset: 2px; }
+    .hero-gradient { background: linear-gradient(135deg, rgba(112,86,84,0.08) 0%, rgba(138,110,108,0.03) 100%); }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface font-body selection:bg-primary/20 antialiased">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Layered Frame -->
+  <div class="min-h-screen p-3 md:p-6 lg:p-10">
+  <div class="mx-auto max-w-[1600px] bg-surface border border-outline-variant/20 shadow-2xl relative overflow-hidden min-h-[calc(100vh-1.5rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-5rem)]">
+
+  <!-- Floating Glass Navigation -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-site rounded-full glass-nav ghost-border shadow-[0_8px_32px_0_rgba(28,28,24,0.06)] flex justify-between items-center px-6 md:px-8 py-3 z-50">
+    <a href="../" class="text-xl font-bold font-headline text-on-surface hover:text-primary transition-colors"><img src="../images/logo-48.png" alt="canLM logo" width="32" height="32" class="inline-block rounded-md mr-2 -mt-0.5">canLM</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="../" data-en="Home" data-fr="Accueil">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="../mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline font-medium text-sm tracking-wide" href="../research/" data-en="Research" data-fr="Recherche">Research</a>
+      <a class="text-on-surface font-headline font-bold text-sm tracking-wide" href="../ottavo/" data-en="Ottavo" data-fr="Ottavo">Ottavo</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1 text-xs font-label uppercase tracking-widest text-on-surface-variant">
+        <button class="lang-btn active px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="en" aria-label="English">EN</button>
+        <span class="text-outline-variant">/</span>
+        <button class="lang-btn px-2 py-1 rounded-full hover:bg-surface-container-high transition-colors" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+      </div>
+      <button class="md:hidden flex flex-col gap-1.5 p-2" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-opacity"></span>
+        <span class="w-5 h-0.5 bg-on-surface rounded-full transition-transform"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl flex-col items-center justify-center gap-8 text-center" id="mobile-menu">
+    <a class="text-2xl font-headline text-on-surface" href="../" data-en="Home" data-fr="Accueil">Home</a>
+    <a class="text-2xl font-headline text-on-surface" href="../mission/" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+    <a class="text-2xl font-headline text-on-surface" href="../research/" data-en="Research" data-fr="Recherche">Research</a>
+    <a class="text-2xl font-headline text-on-surface font-bold" href="../ottavo/" data-en="Ottavo" data-fr="Ottavo">Ottavo</a>
+    <div class="flex items-center gap-2 text-sm font-label uppercase tracking-widest text-on-surface-variant mt-4">
+      <button class="lang-btn active px-3 py-1 rounded-full" data-lang="en" aria-label="English">EN</button>
+      <span class="text-outline-variant">/</span>
+      <button class="lang-btn px-3 py-1 rounded-full" data-lang="fr" aria-label="Fran&ccedil;ais">FR</button>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <header class="relative min-h-[80vh] flex items-center pt-24 pb-16 overflow-hidden">
+      <div class="absolute inset-0 z-0 hero-gradient"></div>
+      <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.06] pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 400 400" class="w-full h-full text-primary fill-current">
+          <circle cx="300" cy="200" r="250" opacity="0.3"/>
+          <circle cx="350" cy="150" r="150" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+          <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 ghost-border text-[0.75rem] uppercase tracking-[0.1em] font-label text-primary font-semibold" data-en="Coming May 2026" data-fr="Lancement mai 2026">Coming May 2026</span>
+          <h1 class="text-5xl md:text-7xl font-headline font-bold text-on-surface leading-[1.1] mb-8" data-html data-en="An AI assistant &lt;br&gt;&lt;span class='italic text-primary'&gt;built for Canada&lt;/span&gt;" data-fr="Un assistant IA &lt;br&gt;&lt;span class='italic text-primary'&gt;fait pour le Canada&lt;/span&gt;">An AI assistant <br><span class="italic text-primary">built for Canada</span></h1>
+          <p class="text-xl md:text-2xl text-on-surface-variant font-light leading-relaxed mb-10 max-w-2xl" data-en="Ottavo is a Canadian AI assistant &mdash; designed to understand who you are, where you live, and how you communicate. Your data stays in Canada. Your language is respected. Your context is understood." data-fr="Ottavo est un assistant IA canadien &mdash; con&ccedil;u pour comprendre qui vous &ecirc;tes, o&ugrave; vous vivez et comment vous communiquez. Vos donn&eacute;es restent au Canada. Votre langue est respect&eacute;e. Votre contexte est compris.">Ottavo is a Canadian AI assistant &mdash; designed to understand who you are, where you live, and how you communicate. Your data stays in Canada. Your language is respected. Your context is understood.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#waitlist" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-medium text-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group" data-en="Join the Waitlist" data-fr="Rejoindre la liste d'attente">
+              Join the Waitlist
+              <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+            <a href="#why-ottavo" class="glass-card ghost-border px-8 py-4 rounded-xl font-medium text-lg hover:bg-surface-container transition-all flex items-center justify-center" data-en="Learn More" data-fr="En savoir plus">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Why Ottavo -->
+    <section id="why-ottavo" class="py-24 md:py-32 bg-surface">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16 md:mb-20">
+          <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Why Ottavo" data-fr="Pourquoi Ottavo">Why Ottavo</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Built different. Built Canadian." data-fr="Construit diff&eacute;remment. Construit canadien.">Built different. Built Canadian.</h2>
+          <p class="text-lg text-on-surface-variant font-light max-w-2xl mx-auto" data-en="Most AI assistants were built with American users in mind. Ottavo was built to get Canada right." data-fr="La plupart des assistants IA ont &eacute;t&eacute; con&ccedil;us pour les utilisateurs am&eacute;ricains. Ottavo a &eacute;t&eacute; con&ccedil;u pour bien comprendre le Canada.">Most AI assistants were built with American users in mind. Ottavo was built to get Canada right.</p>
+          <div class="w-24 h-1 bg-primary/20 mx-auto rounded-full mt-6"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">shield</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="Your Data Stays in Canada" data-fr="Vos donn&eacute;es restent au Canada">Your Data Stays in Canada</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Every conversation lives on Canadian infrastructure &mdash; servers in Canada, under Canadian law. Your personal information is never routed through foreign data centres. Genuine Canadian data sovereignty." data-fr="Toutes vos conversations sont h&eacute;berg&eacute;es sur des infrastructures canadiennes &mdash; des serveurs au Canada, r&eacute;gis par les lois canadiennes. Vos renseignements personnels ne transitent jamais par des centres de donn&eacute;es &agrave; l'&eacute;tranger. Une vraie souverainet&eacute; num&eacute;rique canadienne.">Every conversation lives on Canadian infrastructure &mdash; servers in Canada, under Canadian law. Your personal information is never routed through foreign data centres. Genuine Canadian data sovereignty.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">translate</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="It Actually Speaks Canadian" data-fr="Il parle vraiment comme ici">It Actually Speaks Canadian</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Ottavo responds in Qu&eacute;b&eacute;cois French, not European French. It understands &laquo;courriel&raquo;, &laquo;magasiner&raquo;, and &laquo;souper&raquo;. It doesn't correct code-switching between English and French &mdash; because in Montr&eacute;al, Ottawa-Gatineau, and New Brunswick, that's perfectly normal." data-fr="Ottavo r&eacute;pond en fran&ccedil;ais qu&eacute;b&eacute;cois, pas en fran&ccedil;ais de France. Il comprend &laquo; courriel &raquo;, &laquo; magasiner &raquo; et &laquo; souper &raquo;. Il ne corrige pas le fait de passer de l'anglais au fran&ccedil;ais dans la m&ecirc;me phrase &mdash; parce qu'&agrave; Montr&eacute;al, en Outaouais et au Nouveau-Brunswick, c'est compl&egrave;tement normal.">Ottavo responds in Qu&eacute;b&eacute;cois French, not European French. It understands &laquo;courriel&raquo;, &laquo;magasiner&raquo;, and &laquo;souper&raquo;. It doesn't correct code-switching between English and French &mdash; because in Montr&eacute;al, Ottawa-Gatineau, and New Brunswick, that's perfectly normal.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">account_balance</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="It Knows Canada" data-fr="Il conna&icirc;t le Canada">It Knows Canada</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Ottavo understands Canadian law, institutions, and life. It knows the CRA, TFSAs, CEGEP, provincial drinking ages, and metric by default. When you ask a question, you get a Canadian answer." data-fr="Ottavo comprend les lois canadiennes, les institutions et la r&eacute;alit&eacute; canadienne. Il conna&icirc;t l'ARC, les CELI, le C&Eacute;GEP, l'&acirc;ge l&eacute;gal par province, et le syst&egrave;me m&eacute;trique par d&eacute;faut. Quand vous posez une question, vous obtenez une r&eacute;ponse canadienne.">Ottavo understands Canadian law, institutions, and life. It knows the CRA, TFSAs, CEGEP, provincial drinking ages, and metric by default. When you ask a question, you get a Canadian answer.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow flex flex-col items-start hover:-translate-y-2 transition-transform duration-500 group">
+            <div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">favorite</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-headline font-bold mb-3 md:mb-4" data-en="Built with Canadian Values" data-fr="B&acirc;ti avec des valeurs canadiennes">Built with Canadian Values</h3>
+            <p class="text-on-surface-variant leading-relaxed font-light" data-en="Privacy, transparency, and respect for Indigenous communities are baked into how Ottavo was designed. Built to comply with Canada's privacy laws, including Quebec's Law 25 &mdash; the most rigorous privacy framework in the country." data-fr="La protection de la vie priv&eacute;e, la transparence et le respect des communaut&eacute;s autochtones font partie int&eacute;grante de la conception d'Ottavo. D&eacute;velopp&eacute; pour respecter les lois canadiennes, notamment la Loi 25 du Qu&eacute;bec &mdash; le cadre le plus rigoureux au pays.">Privacy, transparency, and respect for Indigenous communities are baked into how Ottavo was designed. Built to comply with Canada's privacy laws, including Quebec's Law 25 &mdash; the most rigorous privacy framework in the country.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who Is Ottavo For -->
+    <section class="py-24 md:py-32 bg-primary/[0.04] relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 1000 300" class="w-full h-full text-primary fill-none stroke-current stroke-[0.5]" preserveAspectRatio="none">
+          <path d="M0,250 L100,180 L200,220 L350,80 L500,150 L650,40 L800,180 L900,100 L1000,200" />
+        </svg>
+      </div>
+      <div class="container mx-auto px-6 max-w-content relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div>
+            <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="For Canadians" data-fr="Pour les Canadiens">For Canadians</span>
+            <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-6 leading-tight" data-en="Who is Ottavo for?" data-fr="Ottavo, c'est pour qui?">Who is Ottavo for?</h2>
+            <p class="text-lg text-on-surface-variant font-light leading-relaxed" data-en="Ottavo is for every Canadian who has ever gotten an American answer to a Canadian question." data-fr="Ottavo, c'est pour tous les Canadiens qui ont d&eacute;j&agrave; re&ccedil;u une r&eacute;ponse am&eacute;ricaine &agrave; une question canadienne.">Ottavo is for every Canadian who has ever gotten an American answer to a Canadian question.</p>
+          </div>
+          <div class="space-y-6">
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">01</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Students in Quebec" data-fr="&Eacute;tudiants au Qu&eacute;bec">Students in Quebec</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Who want help in French that actually sounds like French from here." data-fr="Qui veulent de l'aide en fran&ccedil;ais qui sonne comme le fran&ccedil;ais d'ici.">Who want help in French that actually sounds like French from here.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">02</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Small Business Owners" data-fr="Propri&eacute;taires de PME">Small Business Owners</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Who need to understand their provincial tax obligations, not IRS guidance." data-fr="Qui ont besoin de comprendre leurs obligations fiscales provinciales, pas les r&egrave;gles de l'IRS.">Who need to understand their provincial tax obligations, not IRS guidance.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">03</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Newcomers to Canada" data-fr="Nouveaux arrivants">Newcomers to Canada</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Learning to navigate Canadian government services and institutions." data-fr="Qui apprennent &agrave; naviguer dans les services gouvernementaux et les institutions canadiennes.">Learning to navigate Canadian government services and institutions.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="text-3xl font-headline font-bold text-primary/30 shrink-0">04</span>
+              <div>
+                <h3 class="text-lg font-headline font-bold mb-1" data-en="Developers &amp; Organizations" data-fr="D&eacute;veloppeurs et organisations">Developers &amp; Organizations</h3>
+                <p class="text-on-surface-variant font-light text-sm leading-relaxed" data-en="Building AI-powered products through the Ottavo API, with Canadian data residency guarantees." data-fr="Qui b&acirc;tissent des produits propuls&eacute;s par l'IA via l'API d'Ottavo, avec des garanties de r&eacute;sidence des donn&eacute;es au Canada.">Building AI-powered products through the Ottavo API, with Canadian data residency guarantees.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tiers -->
+    <section class="py-24 md:py-32 bg-surface">
+      <div class="container mx-auto px-6 max-w-content">
+        <div class="text-center mb-12 md:mb-16">
+          <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Plans" data-fr="Formules">Plans</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Choose your tier" data-fr="Choisissez votre formule">Choose your tier</h2>
+          <div class="w-24 h-1 bg-primary/20 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow text-center">
+            <span class="text-4xl md:text-5xl font-headline font-bold text-primary block mb-3" data-en="Silver" data-fr="Argent">Silver</span>
+            <span class="font-label text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-3" data-en="Free" data-fr="Gratuit">Free</span>
+            <p class="text-on-surface-variant font-light text-sm" data-en="Get started with Ottavo at no cost. Core Canadian AI capabilities, bilingual support, and data sovereignty included." data-fr="Commencez avec Ottavo sans frais. Fonctionnalit&eacute;s d'IA canadiennes essentielles, soutien bilingue et souverainet&eacute; des donn&eacute;es inclus.">Get started with Ottavo at no cost. Core Canadian AI capabilities, bilingual support, and data sovereignty included.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow text-center ring-2 ring-primary/20">
+            <span class="text-4xl md:text-5xl font-headline font-bold text-primary block mb-3" data-en="Gold" data-fr="Or">Gold</span>
+            <span class="font-label text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-3" data-en="Pro" data-fr="Pro">Pro</span>
+            <p class="text-on-surface-variant font-light text-sm" data-en="Enhanced capabilities for professionals and power users. Priority access, extended context, and advanced features." data-fr="Capacit&eacute;s am&eacute;lior&eacute;es pour les professionnels. Acc&egrave;s prioritaire, contexte &eacute;tendu et fonctionnalit&eacute;s avanc&eacute;es.">Enhanced capabilities for professionals and power users. Priority access, extended context, and advanced features.</p>
+          </div>
+          <div class="glass-card p-8 md:p-10 rounded-xl ghost-border ambient-shadow text-center">
+            <span class="text-4xl md:text-5xl font-headline font-bold text-primary block mb-3" data-en="Platinum" data-fr="Platine">Platinum</span>
+            <span class="font-label text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-3" data-en="Enterprise" data-fr="Entreprise">Enterprise</span>
+            <p class="text-on-surface-variant font-light text-sm" data-en="Full-scale deployment for Canadian organizations. Custom integrations, dedicated infrastructure, and SLA guarantees." data-fr="D&eacute;ploiement complet pour les organisations canadiennes. Int&eacute;grations personnalis&eacute;es, infrastructure d&eacute;di&eacute;e et garanties SLA.">Full-scale deployment for Canadian organizations. Custom integrations, dedicated infrastructure, and SLA guarantees.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="py-24 md:py-32 bg-surface-container-low">
+      <div class="container mx-auto px-6 max-w-content text-center">
+        <span aria-hidden="true" class="material-symbols-outlined text-primary/30 text-6xl mb-6 md:mb-8">format_quote</span>
+        <blockquote class="text-2xl md:text-4xl font-headline italic text-on-surface leading-relaxed mb-8 md:mb-10" data-en="&ldquo;AI is becoming part of everyday life. Canadians deserve an AI assistant that reflects their country.&rdquo;" data-fr="&laquo; L'IA fait de plus en plus partie du quotidien. Les Canadiens m&eacute;ritent un assistant IA qui refl&egrave;te leur pays. &raquo;">&ldquo;AI is becoming part of everyday life. Canadians deserve an AI assistant that reflects their country.&rdquo;</blockquote>
+        <cite class="not-italic font-label text-sm tracking-widest uppercase text-primary font-bold" data-en="&mdash; canLM Research" data-fr="&mdash; Recherche canLM">&mdash; canLM Research</cite>
+      </div>
+    </section>
+
+    <!-- Waitlist CTA -->
+    <section id="waitlist" class="py-24 md:py-32 bg-surface">
+      <div class="container mx-auto px-6 max-w-narrow text-center">
+        <span class="text-primary font-label text-xs uppercase tracking-[0.1em] font-semibold mb-4 block" data-en="Get Early Access" data-fr="Acc&egrave;s anticipé">Get Early Access</span>
+        <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4" data-en="Be first in line" data-fr="Soyez parmi les premiers">Be first in line</h2>
+        <p class="text-lg text-on-surface-variant font-light mb-10" data-en="Ottavo launches May 2026. Join the waitlist to get early access and be part of shaping Canada's AI assistant." data-fr="Ottavo sera lanc&eacute; en mai 2026. Rejoignez la liste d'attente pour un acc&egrave;s anticip&eacute; et participez &agrave; fa&ccedil;onner l'assistant IA du Canada.">Ottavo launches May 2026. Join the waitlist to get early access and be part of shaping Canada's AI assistant.</p>
+        <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <label for="waitlist-email" class="sr-only" data-en="Email address" data-fr="Adresse courriel">Email address</label>
+          <input type="email" id="waitlist-email" required placeholder="you@example.ca" class="flex-1 px-6 py-4 rounded-xl border border-outline-variant/30 bg-surface-container-low text-on-surface font-body focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all" aria-label="Email address">
+          <button type="submit" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-medium hover:shadow-xl transition-all whitespace-nowrap" data-en="Join Waitlist" data-fr="S'inscrire">Join Waitlist</button>
+        </form>
+        <p id="waitlist-success" class="mt-6 text-primary font-medium hidden" data-en="Thank you! We'll be in touch before launch." data-fr="Merci! Nous vous contacterons avant le lancement.">Thank you! We'll be in touch before launch.</p>
+        <p class="mt-4 text-xs text-on-surface-variant/60" data-en="Your email stays in Canada. We'll never share it." data-fr="Votre courriel reste au Canada. Nous ne le partagerons jamais.">Your email stays in Canada. We'll never share it.</p>
+      </div>
+    </section>
+
+    <!-- Powered by canLM -->
+    <section class="py-16 bg-surface-container-low">
+      <div class="container mx-auto px-6 max-w-content text-center">
+        <p class="text-on-surface-variant font-light leading-relaxed" data-en="Ottavo is a product of Coraxi AI. canLM is Ottavo's research partner, providing the Canadian AI tuning research that powers Ottavo's Canadian-first capabilities." data-fr="Ottavo est un produit de Coraxi AI. canLM est le partenaire de recherche d'Ottavo et fournit les travaux de recherche en adaptation d'IA canadienne qui alimentent les capacit&eacute;s canadiennes d'Ottavo.">Ottavo is a product of Coraxi AI. canLM is Ottavo's research partner, providing the Canadian AI tuning research that powers Ottavo's Canadian-first capabilities.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface w-full py-12 md:py-16">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-site mx-auto gap-8">
+      <div class="text-center md:text-left">
+        <a href="../" class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors">canLM</a>
+        <p class="font-label text-xs uppercase tracking-[0.05em] text-primary mt-2" data-en="Canada's Applied AI Research" data-fr="Recherche appliqu&eacute;e en IA du Canada">Canada's Applied AI Research</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a href="../" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Home" data-fr="Accueil">Home</a>
+        <a href="../mission/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Focus Areas" data-fr="Domaines d'int&eacute;r&ecirc;t">Focus Areas</a>
+        <a href="../research/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Research" data-fr="Recherche">Research</a>
+        <a href="../ottavo/" class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant hover:text-primary transition-colors" data-en="Ottavo" data-fr="Ottavo">Ottavo</a>
+      </div>
+      <p class="font-label text-xs text-on-surface-variant/60">&copy; <script>document.write(new Date().getFullYear())</script> canLM</p>
+    </div>
+  </footer>
+
+  </div><!-- /frame inner -->
+  </div><!-- /frame outer -->
+
+  <script>
+    (function () {
+      // Language persistence
+      var savedLang = localStorage.getItem('canLM_lang');
+      if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
+        document.documentElement.lang = savedLang;
+        document.querySelectorAll('[data-' + savedLang + ']').forEach(function (el) {
+          if (el.hasAttribute('data-html')) {
+            el.innerHTML = el.getAttribute('data-' + savedLang);
+          } else {
+            el.textContent = el.getAttribute('data-' + savedLang);
+          }
+        });
+      }
+
+      // Mobile nav toggle
+      var toggle = document.getElementById('nav-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', function () {
+          var isOpen = mobileMenu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            mobileMenu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Language toggle
+      var langBtns = document.querySelectorAll('.lang-btn');
+      if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
+        langBtns.forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === savedLang);
+        });
+      }
+      langBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = this.getAttribute('data-lang');
+          langBtns.forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll('.lang-btn[data-lang="' + lang + '"]').forEach(function (b) {
+            b.classList.add('active');
+          });
+          document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+            if (el.hasAttribute('data-html')) {
+              el.innerHTML = el.getAttribute('data-' + lang);
+            } else {
+              el.textContent = el.getAttribute('data-' + lang);
+            }
+          });
+          document.documentElement.lang = lang;
+          localStorage.setItem('canLM_lang', lang);
+        });
+      });
+
+      // Waitlist form
+      var form = document.getElementById('waitlist-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('waitlist-email').value.trim();
+          if (!email) return;
+          var waitlist = JSON.parse(localStorage.getItem('ottavo_waitlist') || '[]');
+          if (waitlist.indexOf(email) === -1) {
+            waitlist.push(email);
+            localStorage.setItem('ottavo_waitlist', JSON.stringify(waitlist));
+          }
+          document.getElementById('waitlist-email').value = '';
+          var success = document.getElementById('waitlist-success');
+          success.classList.remove('hidden');
+          var lang = document.documentElement.lang || 'en';
+          if (success.getAttribute('data-' + lang)) {
+            success.textContent = success.getAttribute('data-' + lang);
+          }
+          form.classList.add('hidden');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
