@@ -65,6 +65,12 @@
       "tags": ["Consumer", "AI Adoption", "Canada"],
       "date": "April 2026",
       "pdf": "./en/research-paper-canadian-consumer-ai-adoption-spring-2026.pdf"
+    },
+    {
+      "title": "Sustainable AI Compute for Canada: Environmental Considerations and Green Infrastructure",
+      "tags": ["Sustainability", "AI Infrastructure", "Environment"],
+      "date": "April 2026",
+      "pdf": "./en/sustainable-ai-compute-paper-en.pdf"
     }
   ],
   "fr": [
@@ -127,6 +133,18 @@
       "tags": ["Bilingue", "Ajustement", "Note technique"],
       "date": "Avril 2026",
       "pdf": "./fr/technical-brief-bilingual-finetuning-fr-ca-en-ca-fr.pdf"
+    },
+    {
+      "title": "L'adoption de l'intelligence artificielle par les consommateurs canadiens — Printemps 2026",
+      "tags": ["Consommateurs", "Adoption IA", "Canada"],
+      "date": "Avril 2026",
+      "pdf": "./fr/research-paper-canadian-consumer-ai-adoption-spring-2026-fr.pdf"
+    },
+    {
+      "title": "L'informatique d'IA durable pour le Canada : considérations environnementales et infrastructure verte",
+      "tags": ["Durabilité", "Infrastructure IA", "Environnement"],
+      "date": "Avril 2026",
+      "pdf": "./fr/sustainable-ai-compute-paper-fr.pdf"
     }
   ]
 }
